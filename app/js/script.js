@@ -1,3 +1,5 @@
+/*
+
 class Planet {
   constructor(){
     this.id ///planet ID
@@ -18,11 +20,14 @@ class Planet {
   }
 }
 
+*/
+
 /// Variables
 
 const Consonant = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',  'P', 'Q', 'R', 'S', 'T',  'V', 'W', 'X', 'Y', 'Z'];
 const Vowels = ['A', 'E', 'I', 'O', 'U', 'Y'];
 const Numbers = ['1','2','3','4','5','6','7','8','9','10'];
+const Planets = ["Spe", "Arion", "Arkas", "Orbitar", "Taphao Thong", "Taphao Kaew", "Dimidium", "Galileo", "Brahe", "Lipperhey", "Janssen", "Harriot", "Ægir", "Amateru", "Dagon", "Tadmor", "Solas", "Juno", "Orbital", "Terminus", "Apollo", "Eternis", "Lumina", "Novise", "Prism", "Shu", "Mythos", "Pheonix", "Elysium", "Lapis", "Azula"]
 
 /// numbers
 let i = Math.floor(Math.random() * 10);
@@ -45,6 +50,7 @@ let f = Math.floor(Math.random() * 21);
 let chance = Math.floor(Math.random() * 100) + 1;
 
 let randomPlanetName;
+let randomCommonName;
 let planetFirstPart;
 let planetSecondPart = [];
 
@@ -52,6 +58,7 @@ let planetSecondPart = [];
 /// html vars
 
 var htmlPlanetName = document.getElementById("htmlPlanetName");
+var htmlCommonName = document.getElementById("htmlCommonName");
 
 
 /// planet Name: 
@@ -144,8 +151,7 @@ function planetName(){
       break;
 
     case 80 > chance && chance >= 50:
-      randomPlanetName = planetFirstPart + " " + planetSecondPart + "-" + planetFirstPart 
-      break;
+      randomPlanetName = planetFirstPart + " " + planetSecondPart + "-" + Vowels[b] + Consonant[c]
 
     case 50 > chance && chance >= 20:
       randomPlanetName = planetFirstPart + " " + planetSecondPart
@@ -163,8 +169,12 @@ function planetName(){
       break;
   }
 
+  randomCommonName = Planets[Math.floor(Math.random() * Planets.length)] + " " + Planets[Math.floor(Math.random() * Planets.length)] 
+
+  htmlCommonName.innerHTML = randomCommonName;
   htmlPlanetName.innerHTML = randomPlanetName;
 
+  console.log(randomCommonName);
 }
 
 

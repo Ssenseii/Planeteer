@@ -1,5 +1,4 @@
 .textCard {
-  border-top: 1px solid #aaa;
   width: 50%;
   height: $textCardHeight;
   
@@ -11,13 +10,15 @@
     display: flex;
     flex-flow: column nowrap;
     margin-top: 1rem;
+    
     &-intro{
       margin-left: 1rem;
+      font-size: 24px;
     }
 
     &-name{
       margin-left: 2rem;
-      font-size: 56px;
+      font-size: 48px;
     }
     margin-bottom: 1rem;
   }
@@ -25,13 +26,14 @@
   &__subtitle{
     margin-left: 1rem;
     font-style: italic;
+    font-size: 16px;
 
     &-known{
       font-weight: 200;
     }
     &-known > span{
       margin-left: 1rem;
-      color: #586E5E;
+      color: $mono-green;
       font-style: normal;
       font-weight: 800;
       letter-spacing: 2px;

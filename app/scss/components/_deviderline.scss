@@ -1,0 +1,15 @@
+.deviderLine1{
+  width: 40%;
+  height: 1px;
+  background-color: #aaa;
+  animation: loadWidth 1s;
+}
+
+.deviderLine2{
+  width: 1px;
+  height: calc($mainHeight - 20vh);
+  display: flex;
+  align-self: flex-end;
+  background-color: #aaa;
+  animation: loadHeight 1s;
+}
