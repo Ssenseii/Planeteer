@@ -1,3 +1,4 @@
 /// heights
 
-$headerHeight: 10vh;
+$headerHeight: calc(100vh - 90vh);
+$mainHeight: calc(100vh - $headerHeight)

@@ -6,17 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Planeteer | Planet Generator</title>
   <link rel="stylesheet" href="dist/style.css">
+  <link href="assets/fonts/RobotoSlab/stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+  
   <header class="header">
-    <div class="header__logo">header logo</div>
+    <div class="header__logo">
+      <img class="header__logo-icon" src="assets/images/PlaneteerLogo.svg" width="100%" height="100%" alt="">
+      <h1 class="header__logo-title">Planeteer</h1>
+    </div>
     <div class="header__nav">
-      <div class="header__nav-element">nav element</div>
+      <div class="header__nav-element">New</div>
+      <div class="header__nav-element">Lists</div>
+      <div class="header__nav-element">Market</div>
+      <div class="header__nav-element">Meta</div>
     </div>
   </header>
+  
+  
   <main class="main">
-    <h1>Planet Name:</h1>
-      <h1 id="htmlPlanetName"></h1>
+    
+    <div class="main__left">
+      <div class="main__left-canvas"></div>
+      <div class="main__left-title">
+        <h1>Planet Name:</h1>
+        <h1 id="htmlPlanetName"></h1>
+      </div>
+    </div>
+    
+    <div class="main__right"></div>
   </main>
 </body>
 <script src="app/js/three.js"></script>

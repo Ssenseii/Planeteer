@@ -1,0 +1,17 @@
+.main{
+  display: flex;
+  flex-flow: row nowrap;
+  border: 1px solid green;
+  width: 100%;
+  height: $mainHeight;
+  
+  &__left{
+    border: 1px solid green;
+    width: 60%;
+  }
+
+  &__right{
+    border: 1px solid green;
+    width: 40%;
+  } 
+}
