@@ -24,6 +24,36 @@ const Consonant = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',  'P', 
 const Vowels = ['A', 'E', 'I', 'O', 'U', 'Y'];
 const Numbers = ['1','2','3','4','5','6','7','8','9','10'];
 
+/// numbers
+let i = Math.floor(Math.random() * 10);
+let j = Math.floor(Math.random() * 10);
+let k = Math.floor(Math.random() * 10);
+let l = Math.floor(Math.random() * 10);
+let m = Math.floor(Math.random() * 10);
+let n = Math.floor(Math.random() * 10);
+
+/// vowels
+let a = Math.floor(Math.random() * 6);
+let b = Math.floor(Math.random() * 6);
+let c = Math.floor(Math.random() * 6);
+
+/// consonants
+let d = Math.floor(Math.random() * 21);
+let e = Math.floor(Math.random() * 21);
+let f = Math.floor(Math.random() * 21);
+
+let chance = Math.floor(Math.random() * 100) + 1;
+
+let randomPlanetName;
+let planetFirstPart;
+let planetSecondPart = [];
+
+
+/// html vars
+
+var htmlPlanetName = document.getElementById("htmlPlanetName");
+
+
 /// planet Name: 
 
 function planetName(){
@@ -45,28 +75,15 @@ function planetName(){
     We need the id to have a range between 2 and 6 digits
     sometimes with a dash in between.
 
+
+    ///name format: 
+
+    AA 54512 a
+    AAA-4564
+    AAA-Date(2045-2087)-AAA 41 
+
   */
 
-  /// numbers
-  let i = Math.floor(Math.random() * 10);
-  let j = Math.floor(Math.random() * 10);
-  let k = Math.floor(Math.random() * 10);
-
-  /// vowels
-  let a = Math.floor(Math.random() * 6);
-  let b = Math.floor(Math.random() * 6);
-  let c = Math.floor(Math.random() * 6);
-
-  /// consonants
-  let d = Math.floor(Math.random() * 21);
-  let e = Math.floor(Math.random() * 21);
-  let f = Math.floor(Math.random() * 21);
-
-  let chance = Math.floor(Math.random() * 100) + 1;
-  
-  let planetFirstPart;
-  let PlanetSecondPart;
-    
   /// chances of producing a name
   switch(true){
       case chance >= 80: 
@@ -93,21 +110,64 @@ function planetName(){
         break;
     }
 
-    /// ID generation: We're going simple, 3 numbers
+    /// ID generation: 
 
-    PlanetSecondPart = Numbers[i] + Numbers[j] + Numbers[k];
-    
-    let planet = planetFirstPart + "-" + PlanetSecondPart;
-  
-    console.log(planet)
-      
+    switch(true){
+      case chance > 80:
+        planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k] + Numbers[l] + Numbers[m];
+        break;
+
+      case 80 > chance && chance >= 50:
+        planetSecondPart = Numbers[i] + Numbers[j];
+        break;
+
+      case 50 > chance && chance >= 20:
+        planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k];
+        break;
+
+      case 20 > chance && chance >= 10:
+        planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k] + Numbers[l];
+        break;
+
+      case 10 > chance:
+        planetSecondPart = Numbers[i];
+        break;
+
+      default:
+        break;
+    }
+
+
+  switch (true) {
+    case chance > 80:
+      randomPlanetName = planetFirstPart + "-" + Vowels[a] + Vowels[b] + Vowels[c] + " " + planetSecondPart + "-" + Numbers[j];
+      break;
+
+    case 80 > chance && chance >= 50:
+      randomPlanetName = planetFirstPart + " " + planetSecondPart + "-" + planetFirstPart 
+      break;
+
+    case 50 > chance && chance >= 20:
+      randomPlanetName = planetFirstPart + " " + planetSecondPart
+      break;
+
+    case 20 > chance && chance >= 10:
+      randomPlanetName = planetFirstPart + "-" + Vowels[a] + " " + planetSecondPart
+      break;
+
+    case 10 > chance:
+      randomPlanetName = planetFirstPart + '::' + Numbers[i] + "-" + Vowels[a] + " " + planetSecondPart
+      break;
+
+    default:
+      break;
+  }
+
+  htmlPlanetName.innerHTML = randomPlanetName;
 
 }
 
-for(let it  = 0; it < 100; it++){
-  planetName();
-}
 
-
+planetName();
 
 
