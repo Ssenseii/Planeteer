@@ -1,4 +1,5 @@
 /// heights
 
 $headerHeight: calc(100vh - 90vh);
-$mainHeight: calc(100vh - $headerHeight)
+$mainHeight: calc(100vh - $headerHeight);
+$textCardHeight: calc($mainHeight - 50vh);

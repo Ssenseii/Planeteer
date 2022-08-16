@@ -1,0 +1,40 @@
+.textCard {
+  border-top: 1px solid #aaa;
+  width: 50%;
+  height: $textCardHeight;
+  
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  &__title{
+    display: flex;
+    flex-flow: column nowrap;
+    margin-top: 1rem;
+    &-intro{
+      margin-left: 1rem;
+    }
+
+    &-name{
+      margin-left: 2rem;
+      font-size: 56px;
+    }
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle{
+    margin-left: 1rem;
+    font-style: italic;
+
+    &-known{
+      font-weight: 200;
+    }
+    &-known > span{
+      margin-left: 1rem;
+      color: #586E5E;
+      font-style: normal;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+  }
+}
