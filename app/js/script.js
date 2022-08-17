@@ -5,7 +5,7 @@ class Planet {
     this.id ///planet ID
     this.name, /// planet Name
     this.size, /// xxs, xs, s, m, l, xl, xxl
-    this.rotationSpeed, /// speed from 1 to 100
+    this.orbitalPeriod, /// speed from 1 to 100
     this.State, /// gaz giant, solid rock, liquid conformation
     this.Status, /// Living / Dead T/F
     this.moonStatus, /// does it have a moon? T/F
@@ -21,6 +21,13 @@ class Planet {
 }
 
 */
+
+/// Rarity Chances;
+/// 1-5 = unique
+/// 5-15 = rare
+/// 15 - 30 = legendary
+/// 30 - 50 = uncommon
+/// 50 - 100 = common
 
 /// rarity system 
 
@@ -58,9 +65,15 @@ let e = Math.floor(Math.random() * Consonant.length);
 let f = Math.floor(Math.random() * Consonant.length);
 
 let chance = Math.floor(Math.random() * 100) + 1;
+let chance2 = Math.floor(Math.random() * 100) + 1;
 
 let randomPlanetName;
 let randomCommonName;
+let randomPlanetId;
+let randomPlanetSize;
+let randomOrbitalPeriod;
+
+
 let planetFirstPart;
 let planetSecondPart = [];
 
@@ -69,6 +82,10 @@ let planetSecondPart = [];
 
 var htmlPlanetName = document.getElementById("htmlPlanetName");
 var htmlCommonName = document.getElementById("htmlCommonName");
+var htmlId = document.getElementById("htmlId");
+var htmlName = document.getElementById("htmlName");
+var htmlSize = document.getElementById("htmlSize");
+let htmlOrbitalPeriod = document.getElementById("htmlOrbitalPeriod");
 
 
 /// planet Name: 
@@ -183,15 +200,69 @@ function planetName(){
 
   htmlCommonName.innerHTML = randomCommonName;
   htmlPlanetName.innerHTML = randomPlanetName;
+  htmlName.innerHTML = randomPlanetName;
 
-  console.log(randomCommonName);
+
+
+}
+
+/// ID generation
+
+function PlanetID (){
+
+  /// this is gonna work for now, we might need to use UUID but who knows
+
+  randomPlanetId = Date.now() * (Math.floor(Math.random() * 101) +1) ;
+  htmlId.innerHTML = randomPlanetId;
+}
+
+function PlanetSize (){
+  /// xxs, xs, s, m, l, xl, xxl, xxxl
+
+  switch (true) {
+    case 5 > chance2 && chance2 >= 1:
+      randomPlanetSize = "XXL: Largest Planet In Their Star System";
+      htmlSize.style.color = "#E6CD22";
+      break;
+
+    case 10 > chance2 && chance2 >= 5:
+      randomPlanetSize = "XL";
+      htmlSize.style.color = "#AD5350";
+      break;
+    
+    case 20 > chance2 && chance2 >= 10:
+      randomPlanetSize = "L";
+      htmlSize.style.color = "#9582AD";
+    break;
+
+    case 30 > chance2 && chance2 >= 20:
+      randomPlanetSize = "S";
+      htmlSize.style.color = "#9582AD";
+      break;
+
+    case 50 > chance2 && chance2 >= 30:
+      randomPlanetSize = "XS";
+      htmlSize.style.color = "#5A8EC4";
+      break;
+
+    case 50 <= chance2:
+      randomPlanetSize = "M";
+      htmlSize.style.color = "#68AD62";
+      break;
+
+    default:
+      break;
+  }
+
+  htmlSize.innerHTML = randomPlanetSize;
+
 }
 
 
 
-
-
 planetName();
+PlanetID();
+PlanetSize();
 
 
 
