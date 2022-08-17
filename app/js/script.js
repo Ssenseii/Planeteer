@@ -90,7 +90,7 @@ let htmlOrbitalPeriod = document.getElementById("htmlOrbitalPeriod");
 
 /// planet Name: 
 
-function planetName(){
+function PlanetName(){
 
   /// how a planet name works is: 
   /*  
@@ -175,22 +175,22 @@ function planetName(){
   switch (true) {
     case chance > 80:
       randomPlanetName = planetFirstPart + "-" + Vowels[a] + Vowels[b] + Vowels[c] + " " + planetSecondPart + "-" + Numbers[j];
-      break;
+      break;/// working
 
     case 80 > chance && chance >= 50:
-      randomPlanetName = planetFirstPart + " " + planetSecondPart + "-" + Vowels[b] + Consonant[e]
+      randomPlanetName = planetFirstPart + " " + planetSecondPart + "-" + Vowels[b] + Consonant[e];
 
     case 50 > chance && chance >= 20:
       randomPlanetName = planetFirstPart + " " + planetSecondPart
-      break;
+      break; ///working
 
     case 20 > chance && chance >= 10:
-      randomPlanetName = planetFirstPart + "-" + Vowels[a] + " " + planetSecondPart
-      break;
+      randomPlanetName = planetFirstPart + "-" + Vowels[a] + " " + planetSecondPart 
+      break; ///working
 
     case 10 > chance:
       randomPlanetName = planetFirstPart + '::' + Numbers[i] + "-" + Vowels[a] + " " + planetSecondPart
-      break;
+      break; ///working
 
     default:
       break;
@@ -259,10 +259,18 @@ function PlanetSize (){
 }
 
 
+function PlanetOrbitalPeriod(){
+  randomOrbitalPeriod = Math.floor(Math.random() * 10000) + 1;;
 
-planetName();
+  if (randomOrbitalPeriod >= 300 && randomOrbitalPeriod <= 400) { htmlOrbitalPeriod.style.color = "#E6CD22" }
+  htmlOrbitalPeriod.innerHTML = randomOrbitalPeriod + " " + " ED";
+}
+
+
+PlanetName();
 PlanetID();
 PlanetSize();
+PlanetOrbitalPeriod();
 
 
 
