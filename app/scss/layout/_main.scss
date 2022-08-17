@@ -11,5 +11,27 @@
 
   &__right{
     width: 40%;
+    display: flex;
+    flex-flow: column;
+
+    &-title{
+      width: 100%;
+      text-align: center;
+      margin-top: 4rem;
+      margin-bottom: 6rem;
+      text-decoration: underline;
+    }
+
+    &-info{
+      display: flex;
+      flex-flow: column nowrap;
+      margin-left: 2rem;
+      font-size: 24px;
+
+      &-title{
+        font-weight: 300;
+        margin-bottom: 1rem;
+      }
+    }
   } 
 }

@@ -22,6 +22,16 @@ class Planet {
 
 */
 
+/// rarity system 
+
+/*
+yellow = unique; 
+red = rare; 
+purple = legendary;
+blue = uncommon;
+green = common;
+*/
+
 /// Variables
 
 const Consonant = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',  'P', 'Q', 'R', 'S', 'T',  'V', 'W', 'X', 'Y', 'Z'];
@@ -30,22 +40,22 @@ const Numbers = ['1','2','3','4','5','6','7','8','9','10'];
 const Planets = ["Spe", "Arion", "Arkas", "Orbitar", "Taphao Thong", "Taphao Kaew", "Dimidium", "Galileo", "Brahe", "Lipperhey", "Janssen", "Harriot", "Ægir", "Amateru", "Dagon", "Tadmor", "Solas", "Juno", "Orbital", "Terminus", "Apollo", "Eternis", "Lumina", "Novise", "Prism", "Shu", "Mythos", "Pheonix", "Elysium", "Lapis", "Azula"]
 
 /// numbers
-let i = Math.floor(Math.random() * 10);
-let j = Math.floor(Math.random() * 10);
-let k = Math.floor(Math.random() * 10);
-let l = Math.floor(Math.random() * 10);
-let m = Math.floor(Math.random() * 10);
-let n = Math.floor(Math.random() * 10);
+let i = Math.floor(Math.random() * Numbers.length);
+let j = Math.floor(Math.random() * Numbers.length);
+let k = Math.floor(Math.random() * Numbers.length);
+let l = Math.floor(Math.random() * Numbers.length);
+let m = Math.floor(Math.random() * Numbers.length);
+let n = Math.floor(Math.random() * Numbers.length);
 
 /// vowels
-let a = Math.floor(Math.random() * 6);
-let b = Math.floor(Math.random() * 6);
-let c = Math.floor(Math.random() * 6);
+let a = Math.floor(Math.random() * Vowels.length);
+let b = Math.floor(Math.random() * Vowels.length);
+let c = Math.floor(Math.random() * Vowels.length);
 
 /// consonants
-let d = Math.floor(Math.random() * 21);
-let e = Math.floor(Math.random() * 21);
-let f = Math.floor(Math.random() * 21);
+let d = Math.floor(Math.random() * Consonant.length);
+let e = Math.floor(Math.random() * Consonant.length);
+let f = Math.floor(Math.random() * Consonant.length);
 
 let chance = Math.floor(Math.random() * 100) + 1;
 
@@ -151,7 +161,7 @@ function planetName(){
       break;
 
     case 80 > chance && chance >= 50:
-      randomPlanetName = planetFirstPart + " " + planetSecondPart + "-" + Vowels[b] + Consonant[c]
+      randomPlanetName = planetFirstPart + " " + planetSecondPart + "-" + Vowels[b] + Consonant[e]
 
     case 50 > chance && chance >= 20:
       randomPlanetName = planetFirstPart + " " + planetSecondPart
@@ -169,7 +179,7 @@ function planetName(){
       break;
   }
 
-  randomCommonName = Planets[Math.floor(Math.random() * Planets.length)] + " " + Planets[Math.floor(Math.random() * Planets.length)] 
+  randomCommonName = Planets[Math.floor(Math.random() * Planets.length)] + " " + Planets[Math.floor(Math.random() * Planets.length)] + " " + Consonant[e] + "-" +  Numbers[i];
 
   htmlCommonName.innerHTML = randomCommonName;
   htmlPlanetName.innerHTML = randomPlanetName;
@@ -178,6 +188,12 @@ function planetName(){
 }
 
 
+
+
+
 planetName();
+
+
+
 
 
