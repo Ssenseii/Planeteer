@@ -5,7 +5,7 @@ class Planet {
     this.id ///planet ID
     this.name, /// planet Name
     this.size, /// xxs, xs, s, m, l, xl, xxl
-    this.orbitalPeriod, /// speed from 1 to 100
+    this.RotationSpeed, /// speed from 1 to 100 (ended up using orbital period instead)
     this.State, /// gaz giant, solid rock, liquid conformation
     this.Status, /// Living / Dead T/F
     this.moonStatus, /// does it have a moon? T/F
@@ -66,16 +66,22 @@ let f = Math.floor(Math.random() * Consonant.length);
 
 let chance = Math.floor(Math.random() * 100) + 1;
 let chance2 = Math.floor(Math.random() * 100) + 1;
+let diameter;
 
+/// randomizers
 let randomPlanetName;
 let randomCommonName;
 let randomPlanetId;
 let randomPlanetSize;
 let randomOrbitalPeriod;
+let randomSubstanceState;
 
-
+/// extra vars for functions;
 let planetFirstPart;
 let planetSecondPart = [];
+
+let PlanetSS2;
+let PlanetSS1 = ["Chthonian", "Carbon", "Coreless", "Desert", "Gas", "Helium", "Hycean", "Ice", "Iron", "Lava", "Ocean", "Puffy", "Silicate", "Terrestrial", "Nuclear"];
 
 
 /// html vars
@@ -85,7 +91,8 @@ var htmlCommonName = document.getElementById("htmlCommonName");
 var htmlId = document.getElementById("htmlId");
 var htmlName = document.getElementById("htmlName");
 var htmlSize = document.getElementById("htmlSize");
-let htmlOrbitalPeriod = document.getElementById("htmlOrbitalPeriod");
+var htmlOrbitalPeriod = document.getElementById("htmlOrbitalPeriod");
+var htmlSubstanceState = document.getElementById("htmlSubstanceState");
 
 
 /// planet Name: 
@@ -221,33 +228,33 @@ function PlanetSize (){
 
   switch (true) {
     case 5 > chance2 && chance2 >= 1:
-      randomPlanetSize = "XXL: Largest Planet In Their Star System";
-      htmlSize.style.color = "#E6CD22";
+      diameter = (Math.floor(Math.random() * 1400000) + 120000)
+      randomPlanetSize = "Giant"
+      htmlSize.style.color = "#E6CD22"
       break;
 
-    case 10 > chance2 && chance2 >= 5:
-      randomPlanetSize = "XL";
-      htmlSize.style.color = "#AD5350";
+    case 15 > chance2 && chance2 >= 5:
+      diameter = (Math.floor(Math.random() * 120000) + 90000)
+      randomPlanetSize = "Planetar"
+      htmlSize.style.color = "#b14d4a"
       break;
     
-    case 20 > chance2 && chance2 >= 10:
-      randomPlanetSize = "L";
-      htmlSize.style.color = "#9582AD";
+    case 30 > chance2 && chance2 >= 15:
+      diameter = (Math.floor(Math.random() * 90000) + 40000)
+      randomPlanetSize = "Mini-Neptune"
+      htmlSize.style.color = "#9582AD"
     break;
 
-    case 30 > chance2 && chance2 >= 20:
-      randomPlanetSize = "S";
-      htmlSize.style.color = "#9582AD";
-      break;
-
     case 50 > chance2 && chance2 >= 30:
-      randomPlanetSize = "XS";
-      htmlSize.style.color = "#5A8EC4";
+      diameter = (Math.floor(Math.random() * 40000) + 12000)
+      randomPlanetSize = "Super-Earth"
+      htmlSize.style.color = "#5A8EC4"
       break;
 
     case 50 <= chance2:
-      randomPlanetSize = "M";
-      htmlSize.style.color = "#68AD62";
+      diameter = (Math.floor(Math.random() * 12000) + 6000)
+      randomPlanetSize = "Dwarf"
+      htmlSize.style.color = "#68AD62"
       break;
 
     default:
@@ -266,11 +273,43 @@ function PlanetOrbitalPeriod(){
   htmlOrbitalPeriod.innerHTML = randomOrbitalPeriod + " " + " ED";
 }
 
+function PlanetSubstanceState() {
+  switch(true){
+    case diameter >= 120000:
+      PlanetSS2 = "Giant"
+      htmlSubstanceState.style.color = "#E6CD22"
+      break;
+      
+    case diameter >= 90000 && diameter < 120000:
+      PlanetSS2 = "ProtoGiant"
+      htmlSubstanceState.style.color = "#b14d4a"
+      break;
+
+    case diameter >= 12000 && diameter < 90000:
+      PlanetSS2 = "Planet"
+      htmlSubstanceState.style.color = "#5A8EC4"
+      break;
+
+    case diameter > 6000 && diameter < 12000 :
+      PlanetSS2 = "Dwarf"
+      htmlSubstanceState.style.color = "#68AD62"
+      break;
+
+    default:
+      break;
+    }   
+
+    randomSubstanceState = PlanetSS1[Math.floor(Math.random() * PlanetSS1.length)] + " " + PlanetSS2;
+
+    htmlSubstanceState.innerHTML = randomSubstanceState; 
+}
+
 
 PlanetName();
 PlanetID();
 PlanetSize();
 PlanetOrbitalPeriod();
+PlanetSubstanceState();
 
 
 

@@ -10,9 +10,11 @@ $textCardHeight: calc($mainHeight - 50vh);
 $mono-green: #586E5E; 
 
 //rarities
+:root{
+  --common: #68AD62;
+  --uncommon: #5A8EC4;
+  --legendary: #9582AD;
+  --rare: #b14d4a;
+  --unique: #E6CD22;
+}
 
-$common: #68AD62;
-$uncommon: #5A8EC4;
-$legendary: #9582AD;
-$rare: #AD5350;
-$unique: #E6CD22;
