@@ -75,6 +75,7 @@ let randomPlanetId;
 let randomPlanetSize;
 let randomOrbitalPeriod;
 let randomSubstanceState;
+let randomLifeStatus;
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -93,7 +94,7 @@ var htmlName = document.getElementById("htmlName");
 var htmlSize = document.getElementById("htmlSize");
 var htmlOrbitalPeriod = document.getElementById("htmlOrbitalPeriod");
 var htmlSubstanceState = document.getElementById("htmlSubstanceState");
-
+var htmlLifeStatus = document.getElementById("htmlLifeStatus");
 
 /// planet Name: 
 
@@ -304,12 +305,27 @@ function PlanetSubstanceState() {
     htmlSubstanceState.innerHTML = randomSubstanceState; 
 }
 
+function PlanetLifeStatus(){
+  /* it returns either dead or alive randomly, coin flip = 50/50 */
+
+  let coinFlip = Math.random();
+    if (coinFlip < 0.5){
+      randomLifeStatus = "Dead Core";
+      
+    }else{
+        randomLifeStatus = "Living Core";
+      htmlLifeStatus.style.color = "#E6CD22"
+      }
+  console.log(coinFlip)
+  htmlLifeStatus.innerHTML = randomLifeStatus;
+}
 
 PlanetName();
 PlanetID();
 PlanetSize();
 PlanetOrbitalPeriod();
 PlanetSubstanceState();
+PlanetLifeStatus();
 
 
 
