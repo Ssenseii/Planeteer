@@ -78,13 +78,16 @@ let randomSubstanceState;
 let randomLifeStatus;
 let randomMoonStatus;
 let randomMoonCount;
+let randomHabitability;
 
 /// extra vars for functions;
 let planetFirstPart;
 let planetSecondPart = [];
 
 let PlanetSS2;
-let PlanetSS1 = ["Chthonian", "Carbon", "Coreless", "Desert", "Gas", "Helium", "Hycean", "Ice", "Iron", "Lava", "Ocean", "Puffy", "Silicate", "Terrestrial", "Nuclear"];
+let PlanetSS1 = ["Chthonian", "Carbon", "Desert", "Gas", "Helium", "Hycean", "Ice", "Iron", "Lava", "Ocean", "Puffy", "Silicate", "Terrestrial", "Nuclear"];
+let PlanetSS1RandomValue = Math.floor(Math.random() * PlanetSS1.length);
+/*["Hydrogen","Helium","Lithium","Beryllium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon","Sodium","Magnesium","Aluminum","Silicon","Phosphorus","Sulfur","Chlorine","Argon","Potassium","Calcium","Scandium","Titanium","Vanadium","Chromium","Manganese","Iron","Cobalt","Nickel","Copper","Zinc","Gallium","Germanium","Arsenic","Selenium","Bromine","Krypton","Rubidium","Strontium","Yttrium","Zirconium","Niobium","Molybdenum","Technetium","Ruthenium","Rhodium","Palladium","Silver","Cadmium","Indium","Tin","Antimony","Tellurium","Iodine","Xenon","Cesium","Barium","Lanthanum","Cerium","Praseodymium","Neodymium","Promethium","Samarium","Europium","Gadolinium","Terbium","Dysprosium","Holmium","Erbium","Thulium","Ytterbium","Lutetium","Hafnium","Tantalum","Tungsten","Rhenium","Osmium","Iridium","Platinum","Gold","Mercury","Thallium","Lead","Bismuth","Polonium","Astatine","Radon","Francium","Radium","Actinium","Thorium","Protactinium","Uranium","Neptunium","Plutonium","Americium","Curium","Berkelium","Californium","Einsteinium","Fermium","Mendelevium","Nobelium","Lawrencium","Rutherfordium","Dubnium","Seaborgium","Bohrium","Hassium","Meitnerium"]; */
 
 let moonCountChance = (Math.round(Math.random() * 2)) + 1;
 
@@ -100,6 +103,7 @@ var htmlSubstanceState = document.getElementById("htmlSubstanceState");
 var htmlLifeStatus = document.getElementById("htmlLifeStatus");
 var htmlMoonStatus = document.getElementById("htmlMoonStatus");
 var htmlMoonCount = document.getElementById("htmlMoonCount");
+var htmlHabitability = document.getElementById("htmlHabitability");
 
 /// planet Name: 
 
@@ -192,6 +196,7 @@ function PlanetName(){
 
     case 80 > chance && chance >= 50:
       randomPlanetName = planetFirstPart + " " + planetSecondPart + "-" + Vowels[b] + Consonant[e];
+      break;
 
     case 50 > chance && chance >= 20:
       randomPlanetName = planetFirstPart + " " + planetSecondPart
@@ -305,9 +310,10 @@ function PlanetSubstanceState() {
       break;
     }   
 
-    randomSubstanceState = PlanetSS1[Math.floor(Math.random() * PlanetSS1.length)] + " " + PlanetSS2;
+    randomSubstanceState = PlanetSS1[PlanetSS1RandomValue] + " " + PlanetSS2;
 
     htmlSubstanceState.innerHTML = randomSubstanceState; 
+
 }
 
 function PlanetLifeStatus(){
@@ -348,6 +354,21 @@ function PlanetMoonCount(){
   htmlMoonCount.innerHTML = randomMoonCount;
 }
 
+function planetHabitability(){
+  if(htmlLifeStatus)
+  {
+    if (PlanetSS1[PlanetSS1RandomValue] == "Terrestrial" || PlanetSS1[PlanetSS1RandomValue] == "Silicate" || PlanetSS1[PlanetSS1RandomValue] == "Ocean"){
+      randomHabitability = "Suited for Human Life";
+    }else{
+      randomHabitability = "Not Suited for Human Life";
+    }
+  }
+  else{
+    randomHabitability = "Unhabitable";
+  }
+  htmlHabitability.innerHTML = randomHabitability;
+}
+
 PlanetName();
 PlanetID();
 PlanetSize();
@@ -356,6 +377,7 @@ PlanetSubstanceState();
 PlanetLifeStatus();
 PlanetMoonStatus();
 PlanetMoonCount();
+planetHabitability();
 
 
 
