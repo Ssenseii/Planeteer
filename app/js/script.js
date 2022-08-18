@@ -76,6 +76,8 @@ let randomPlanetSize;
 let randomOrbitalPeriod;
 let randomSubstanceState;
 let randomLifeStatus;
+let randomMoonStatus;
+let randomMoonCount;
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -84,6 +86,7 @@ let planetSecondPart = [];
 let PlanetSS2;
 let PlanetSS1 = ["Chthonian", "Carbon", "Coreless", "Desert", "Gas", "Helium", "Hycean", "Ice", "Iron", "Lava", "Ocean", "Puffy", "Silicate", "Terrestrial", "Nuclear"];
 
+let moonCountChance = (Math.round(Math.random() * 2)) + 1;
 
 /// html vars
 
@@ -95,6 +98,8 @@ var htmlSize = document.getElementById("htmlSize");
 var htmlOrbitalPeriod = document.getElementById("htmlOrbitalPeriod");
 var htmlSubstanceState = document.getElementById("htmlSubstanceState");
 var htmlLifeStatus = document.getElementById("htmlLifeStatus");
+var htmlMoonStatus = document.getElementById("htmlMoonStatus");
+var htmlMoonCount = document.getElementById("htmlMoonCount");
 
 /// planet Name: 
 
@@ -310,14 +315,37 @@ function PlanetLifeStatus(){
 
   let coinFlip = Math.random();
     if (coinFlip < 0.5){
-      randomLifeStatus = "Dead Core";
+      randomLifeStatus = false;
       
     }else{
-        randomLifeStatus = "Living Core";
+        randomLifeStatus = true;
       htmlLifeStatus.style.color = "#E6CD22"
       }
-  console.log(coinFlip)
   htmlLifeStatus.innerHTML = randomLifeStatus;
+}
+
+
+function PlanetMoonStatus(){
+  
+  let coinFlip = Math.random();
+  if (coinFlip < 0.5) {
+    randomMoonStatus = true;
+
+  } else {
+    randomMoonStatus = false;
+  }
+  
+  htmlMoonStatus.innerHTML = randomMoonStatus;
+}
+
+function PlanetMoonCount(){
+  if(randomMoonStatus){
+      randomMoonCount = moonCountChance;
+  }else{
+    randomMoonCount = "-----"
+  }
+
+  htmlMoonCount.innerHTML = randomMoonCount;
 }
 
 PlanetName();
@@ -326,8 +354,18 @@ PlanetSize();
 PlanetOrbitalPeriod();
 PlanetSubstanceState();
 PlanetLifeStatus();
+PlanetMoonStatus();
+PlanetMoonCount();
 
 
 
 
+///testing 
 
+/*
+
+for(let test = 0 ; test < 10 ; test++){
+  console.log(moonCountChance);
+}
+
+*/
