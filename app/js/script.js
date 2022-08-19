@@ -41,9 +41,9 @@ green = common;
 
 /// Variables
 
-const Consonant = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N',  'P', 'Q', 'R', 'S', 'T',  'V', 'W', 'X', 'Y', 'Z'];
+const Consonant = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'];
 const Vowels = ['A', 'E', 'I', 'O', 'U', 'Y'];
-const Numbers = ['1','2','3','4','5','6','7','8','9','10'];
+const Numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 const Planets = ["Spe", "Arion", "Arkas", "Orbitar", "Taphao Thong", "Taphao Kaew", "Dimidium", "Galileo", "Brahe", "Lipperhey", "Janssen", "Harriot", "Ægir", "Amateru", "Dagon", "Tadmor", "Solas", "Juno", "Orbital", "Terminus", "Apollo", "Eternis", "Lumina", "Novise", "Prism", "Shu", "Mythos", "Pheonix", "Elysium", "Lapis", "Azula"]
 
 /// numbers
@@ -79,17 +79,19 @@ let randomLifeStatus;
 let randomMoonStatus;
 let randomMoonCount;
 let randomHabitability;
+let randomNatureType;
 
 /// extra vars for functions;
 let planetFirstPart;
 let planetSecondPart = [];
 
 let PlanetSS2;
-let PlanetSS1 = ["Chthonian", "Carbon", "Desert", "Gas", "Helium", "Hycean", "Ice", "Iron", "Lava", "Ocean", "Puffy", "Silicate", "Terrestrial", "Nuclear"];
+let PlanetSS1 = ["Carbon", "Desert", "Gas", "Hycean", "Ice", "Iron", "Lava", "Ocean", "Puffy", "Silicate", "Terrestrial", "Nuclear"];
 let PlanetSS1RandomValue = Math.floor(Math.random() * PlanetSS1.length);
 /*["Hydrogen","Helium","Lithium","Beryllium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon","Sodium","Magnesium","Aluminum","Silicon","Phosphorus","Sulfur","Chlorine","Argon","Potassium","Calcium","Scandium","Titanium","Vanadium","Chromium","Manganese","Iron","Cobalt","Nickel","Copper","Zinc","Gallium","Germanium","Arsenic","Selenium","Bromine","Krypton","Rubidium","Strontium","Yttrium","Zirconium","Niobium","Molybdenum","Technetium","Ruthenium","Rhodium","Palladium","Silver","Cadmium","Indium","Tin","Antimony","Tellurium","Iodine","Xenon","Cesium","Barium","Lanthanum","Cerium","Praseodymium","Neodymium","Promethium","Samarium","Europium","Gadolinium","Terbium","Dysprosium","Holmium","Erbium","Thulium","Ytterbium","Lutetium","Hafnium","Tantalum","Tungsten","Rhenium","Osmium","Iridium","Platinum","Gold","Mercury","Thallium","Lead","Bismuth","Polonium","Astatine","Radon","Francium","Radium","Actinium","Thorium","Protactinium","Uranium","Neptunium","Plutonium","Americium","Curium","Berkelium","Californium","Einsteinium","Fermium","Mendelevium","Nobelium","Lawrencium","Rutherfordium","Dubnium","Seaborgium","Bohrium","Hassium","Meitnerium"]; */
-
 let moonCountChance = (Math.round(Math.random() * 2)) + 1;
+
+let planetNatureType = [];
 
 /// html vars
 
@@ -104,10 +106,10 @@ var htmlLifeStatus = document.getElementById("htmlLifeStatus");
 var htmlMoonStatus = document.getElementById("htmlMoonStatus");
 var htmlMoonCount = document.getElementById("htmlMoonCount");
 var htmlHabitability = document.getElementById("htmlHabitability");
-
+var htmlNatureType = document.getElementById("htmlNatureType");
 /// planet Name: 
 
-function PlanetName(){
+function PlanetName() {
 
   /// how a planet name works is: 
   /*  
@@ -136,57 +138,57 @@ function PlanetName(){
   */
 
   /// chances of producing a name
-  switch(true){
-      case chance >= 80: 
-        planetFirstPart =   Consonant[d] + Vowels[a] + Consonant[e];
-        break; 
+  switch (true) {
+    case chance >= 80:
+      planetFirstPart = Consonant[d] + Vowels[a] + Consonant[e];
+      break;
 
     case 80 > chance && chance >= 50:
-        planetFirstPart = Consonant[d] + Vowels[a] + Vowels[b];
-        break;
+      planetFirstPart = Consonant[d] + Vowels[a] + Vowels[b];
+      break;
 
-      case 50 > chance && chance >= 20:
-        planetFirstPart =  Vowels[a] + Vowels[b] + Consonant[d];
-        break;
+    case 50 > chance && chance >= 20:
+      planetFirstPart = Vowels[a] + Vowels[b] + Consonant[d];
+      break;
 
-      case 20 > chance && chance >= 10:
-        planetFirstPart = Vowels[a] + Vowels[b] + Consonant[d] + Vowels[c];
-        break;
+    case 20 > chance && chance >= 10:
+      planetFirstPart = Vowels[a] + Vowels[b] + Consonant[d] + Vowels[c];
+      break;
 
-      case 10 > chance:
-        planetFirstPart = Consonant[d] + Vowels[a] + Vowels[b] + Consonant[e] + Vowels[c];
-        break;
-  
-      default:
-        break;
-    }
+    case 10 > chance:
+      planetFirstPart = Consonant[d] + Vowels[a] + Vowels[b] + Consonant[e] + Vowels[c];
+      break;
 
-    /// ID generation: 
+    default:
+      break;
+  }
 
-    switch(true){
-      case chance > 80:
-        planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k] + Numbers[l] + Numbers[m];
-        break;
+  /// ID generation: 
 
-      case 80 > chance && chance >= 50:
-        planetSecondPart = Numbers[i] + Numbers[j];
-        break;
+  switch (true) {
+    case chance > 80:
+      planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k] + Numbers[l] + Numbers[m];
+      break;
 
-      case 50 > chance && chance >= 20:
-        planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k];
-        break;
+    case 80 > chance && chance >= 50:
+      planetSecondPart = Numbers[i] + Numbers[j];
+      break;
 
-      case 20 > chance && chance >= 10:
-        planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k] + Numbers[l];
-        break;
+    case 50 > chance && chance >= 20:
+      planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k];
+      break;
 
-      case 10 > chance:
-        planetSecondPart = Numbers[i];
-        break;
+    case 20 > chance && chance >= 10:
+      planetSecondPart = Numbers[i] + Numbers[j] + Numbers[k] + Numbers[l];
+      break;
 
-      default:
-        break;
-    }
+    case 10 > chance:
+      planetSecondPart = Numbers[i];
+      break;
+
+    default:
+      break;
+  }
 
 
   switch (true) {
@@ -203,7 +205,7 @@ function PlanetName(){
       break; ///working
 
     case 20 > chance && chance >= 10:
-      randomPlanetName = planetFirstPart + "-" + Vowels[a] + " " + planetSecondPart 
+      randomPlanetName = planetFirstPart + "-" + Vowels[a] + " " + planetSecondPart
       break; ///working
 
     case 10 > chance:
@@ -214,7 +216,7 @@ function PlanetName(){
       break;
   }
 
-  randomCommonName = Planets[Math.floor(Math.random() * Planets.length)] + " " + Planets[Math.floor(Math.random() * Planets.length)] + " " + Consonant[e] + "-" +  Numbers[i];
+  randomCommonName = Planets[Math.floor(Math.random() * Planets.length)] + " " + Planets[Math.floor(Math.random() * Planets.length)] + " " + Consonant[e] + "-" + Numbers[i];
 
   htmlCommonName.innerHTML = randomCommonName;
   htmlPlanetName.innerHTML = randomPlanetName;
@@ -226,15 +228,15 @@ function PlanetName(){
 
 /// ID generation
 
-function PlanetID (){
+function PlanetID() {
 
   /// this is gonna work for now, we might need to use UUID but who knows
 
-  randomPlanetId = Date.now() * (Math.floor(Math.random() * 101) +1) ;
+  randomPlanetId = Date.now() * (Math.floor(Math.random() * 101) + 1);
   htmlId.innerHTML = randomPlanetId;
 }
 
-function PlanetSize (){
+function PlanetSize() {
   /// xxs, xs, s, m, l, xl, xxl, xxxl
 
   switch (true) {
@@ -249,12 +251,12 @@ function PlanetSize (){
       randomPlanetSize = "Planetar"
       htmlSize.style.color = "#b14d4a"
       break;
-    
+
     case 30 > chance2 && chance2 >= 15:
       diameter = (Math.floor(Math.random() * 90000) + 40000)
       randomPlanetSize = "Mini-Neptune"
       htmlSize.style.color = "#9582AD"
-    break;
+      break;
 
     case 50 > chance2 && chance2 >= 30:
       diameter = (Math.floor(Math.random() * 40000) + 12000)
@@ -277,7 +279,7 @@ function PlanetSize (){
 }
 
 
-function PlanetOrbitalPeriod(){
+function PlanetOrbitalPeriod() {
   randomOrbitalPeriod = Math.floor(Math.random() * 10000) + 1;;
 
   if (randomOrbitalPeriod >= 300 && randomOrbitalPeriod <= 400) { htmlOrbitalPeriod.style.color = "#E6CD22" }
@@ -285,12 +287,12 @@ function PlanetOrbitalPeriod(){
 }
 
 function PlanetSubstanceState() {
-  switch(true){
+  switch (true) {
     case diameter >= 120000:
       PlanetSS2 = "Giant"
       htmlSubstanceState.style.color = "#E6CD22"
       break;
-      
+
     case diameter >= 90000 && diameter < 120000:
       PlanetSS2 = "ProtoGiant"
       htmlSubstanceState.style.color = "#b14d4a"
@@ -301,38 +303,38 @@ function PlanetSubstanceState() {
       htmlSubstanceState.style.color = "#5A8EC4"
       break;
 
-    case diameter > 6000 && diameter < 12000 :
+    case diameter > 6000 && diameter < 12000:
       PlanetSS2 = "Dwarf"
       htmlSubstanceState.style.color = "#68AD62"
       break;
 
     default:
       break;
-    }   
+  }
 
-    randomSubstanceState = PlanetSS1[PlanetSS1RandomValue] + " " + PlanetSS2;
+  randomSubstanceState = PlanetSS1[PlanetSS1RandomValue] + " " + PlanetSS2;
 
-    htmlSubstanceState.innerHTML = randomSubstanceState; 
+  htmlSubstanceState.innerHTML = randomSubstanceState;
 
 }
 
-function PlanetLifeStatus(){
+function PlanetLifeStatus() {
   /* it returns either dead or alive randomly, coin flip = 50/50 */
 
   let coinFlip = Math.random();
-    if (coinFlip < 0.5){
-      randomLifeStatus = false;
-      
-    }else{
-        randomLifeStatus = true;
-      htmlLifeStatus.style.color = "#E6CD22"
-      }
+  if (coinFlip < 0.5) {
+    randomLifeStatus = false;
+
+  } else {
+    randomLifeStatus = true;
+    htmlLifeStatus.style.color = "#E6CD22"
+  }
   htmlLifeStatus.innerHTML = randomLifeStatus;
 }
 
 
-function PlanetMoonStatus(){
-  
+function PlanetMoonStatus() {
+
   let coinFlip = Math.random();
   if (coinFlip < 0.5) {
     randomMoonStatus = true;
@@ -340,34 +342,80 @@ function PlanetMoonStatus(){
   } else {
     randomMoonStatus = false;
   }
-  
+
   htmlMoonStatus.innerHTML = randomMoonStatus;
 }
 
-function PlanetMoonCount(){
-  if(randomMoonStatus){
-      randomMoonCount = moonCountChance;
-  }else{
+function PlanetMoonCount() {
+  if (randomMoonStatus) {
+    randomMoonCount = moonCountChance;
+  } else {
     randomMoonCount = "-----"
   }
 
   htmlMoonCount.innerHTML = randomMoonCount;
 }
 
-function planetHabitability(){
-  if(htmlLifeStatus)
-  {
-    if (PlanetSS1[PlanetSS1RandomValue] == "Terrestrial" || PlanetSS1[PlanetSS1RandomValue] == "Silicate" || PlanetSS1[PlanetSS1RandomValue] == "Ocean"){
+function PlanetHabitability() {
+  if (randomLifeStatus) {
+    if (PlanetSS1[PlanetSS1RandomValue] == "Terrestrial" || PlanetSS1[PlanetSS1RandomValue] == "Silicate" || PlanetSS1[PlanetSS1RandomValue] == "Ocean") {
       randomHabitability = "Suited for Human Life";
-    }else{
+    } else {
       randomHabitability = "Not Suited for Human Life";
     }
   }
-  else{
+  else {
     randomHabitability = "Unhabitable";
   }
   htmlHabitability.innerHTML = randomHabitability;
 }
+
+/// Biome Typer according to the planet type;
+/// let PlanetSS1 = ["Chthonian", "Carbon", "Desert", "Gas", "Hycean", "Ice", "Iron", "Lava", "Ocean", "Puffy", "Silicate", "Terrestrial", "Nuclear"]; /// reference
+function PlanetNatureType() {
+  switch (true) {
+    case PlanetSS1[PlanetSS1RandomValue] == "Carbon":
+      planetNatureType = ["Mountainous Terrain", "Volcanic surface", "Broken Rocky Surface", "Hollow Planet"]
+      break;
+    
+      case PlanetSS1[PlanetSS1RandomValue] == "Desert":
+      planetNatureType = ["Dry Deserts", "Semi-Arid deserts", "Coastal Deserts", "Cold Deserts"]
+      break;
+    
+      case PlanetSS1[PlanetSS1RandomValue] == "Gas" || PlanetSS1[PlanetSS1RandomValue] == "Puffy":
+      planetNatureType = ["Hydrogene air", "Helium Air"]
+      break;
+    
+      case PlanetSS1[PlanetSS1RandomValue] == "Hycean" || PlanetSS1[PlanetSS1RandomValue] == "Ocean":
+      planetNatureType = ["Ocean Floor", "Tsunami Waves", "Deep Sink Holes"]
+      break;
+    
+      case PlanetSS1[PlanetSS1RandomValue] == "Ice":
+      planetNatureType = ["Ice Sheets", "Glaciers", "Oceanic Ice", "Ice Shelves", "Sea-Ice", "Snow Fields", "Tundra Biome", "Taiga Forests"];
+      break;
+    
+      case PlanetSS1[PlanetSS1RandomValue] == "Iron" || PlanetSS1[PlanetSS1RandomValue] == "Lava":
+      planetNatureType = ["Molten Lakes", "Molten Crust", "SuperHeated Crust", "Volcanic Ash Clouds"]
+      break;
+    
+      case PlanetSS1[PlanetSS1RandomValue] == "Silicate" || PlanetSS1[PlanetSS1RandomValue] == "Terrestrial":
+      planetNatureType = ["Tropical rainforest", "Tropical seasonal rainforest", "deciduous", "semideciduous", "Temperate giant rainforest", "Montane rainforest", "Temperate deciduous forest", "Temperate evergreen forest", "needleleaf", "sclerophyll", "Subarctic-subalpine needle-leaved forests (taiga)", "Elfin woodland", "Thorn forests and woodlands", "Thorn scrub", "Temperate woodland", "Temperate shrublands", "deciduous", "heath", "sclerophyll", "subalpine-needleleaf", "subalpine-broadleaf", "Savanna", "Temperate grassland", "Alpine grasslands", "Tundra", "Tropical desert", "Warm-temperate desert", "Cool temperate desert scrub", "Arctic-alpine desert", "Bog", "Tropical fresh-water swamp forest", "Temperate fresh-water swamp forest", "Mangrove swamp", "Salt marsh", "Wetland"];
+      break;
+    
+      case PlanetSS1[PlanetSS1RandomValue] == "Nuclear":
+      planetNatureType = ["Uranium terrain", "Francium Ocean", "Plotonium Mountains", "Radium Mines"]
+      break;
+
+    default:
+        break;
+    }
+
+    randomNatureType = planetNatureType[Math.floor(Math.random() * planetNatureType.length)]
+    htmlNatureType.innerHTML = randomNatureType;
+  }
+
+
+
 
 PlanetName();
 PlanetID();
@@ -377,7 +425,8 @@ PlanetSubstanceState();
 PlanetLifeStatus();
 PlanetMoonStatus();
 PlanetMoonCount();
-planetHabitability();
+PlanetHabitability();
+PlanetNatureType();
 
 
 
