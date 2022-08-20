@@ -17,8 +17,8 @@
     }
 
     &-name{
-      margin-left: 2rem;
-      font-size: 48px;
+      margin-left: 4rem;
+      font-size: 36px;
     }
     margin-bottom: 1rem;
   }
@@ -30,13 +30,15 @@
 
     &-known{
       font-weight: 200;
+      font-size: 16px;
     }
+
     &-known > span{
       margin-left: 1rem;
       color: $mono-green;
       font-style: normal;
       font-weight: 800;
-      letter-spacing: 2px;
+      letter-spacing: 1.25px;
     }
   }
 }

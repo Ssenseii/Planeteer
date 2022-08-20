@@ -403,7 +403,7 @@ function PlanetNatureType() {
       break;
     
       case PlanetSS1[PlanetSS1RandomValue] == "Nuclear":
-      planetNatureType = ["Uranium terrain", "Francium Ocean", "Plotonium Mountains", "Radium Mines"]
+      planetNatureType = ["Uranium terrain", "Francium Ocean", "Plutonium Mountains", "Radium Mines"]
       break;
 
     default:
