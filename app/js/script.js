@@ -1,5 +1,5 @@
-/*
 
+/*
 class Planet {
   constructor(){
     this.id ///planet ID
@@ -80,6 +80,7 @@ let randomMoonStatus;
 let randomMoonCount;
 let randomHabitability;
 let randomNatureType;
+let randomNatureColor;
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -107,6 +108,9 @@ var htmlMoonStatus = document.getElementById("htmlMoonStatus");
 var htmlMoonCount = document.getElementById("htmlMoonCount");
 var htmlHabitability = document.getElementById("htmlHabitability");
 var htmlNatureType = document.getElementById("htmlNatureType");
+var htmlNatureColor = document.getElementById("htmlNatureColor");
+
+let canvas = document.getElementById("canvas");
 /// planet Name: 
 
 function PlanetName() {
@@ -415,6 +419,18 @@ function PlanetNatureType() {
   }
 
 
+function PlanetNatureColor(){
+  /* the way this will work is simple,
+    each one of the stats above will have its own color value, inside a giant switch case;
+
+    It's time to introduce three js
+  */
+
+
+}
+
+
+
 
 
 PlanetName();
@@ -429,9 +445,34 @@ PlanetHabitability();
 PlanetNatureType();
 
 
+/// threejs
 
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
 
-///testing 
+const renderer = new THREE.WebGLRenderer({alpha : true}); /// alpha true makes the background transparent
+renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+canvas.appendChild(renderer.domElement);
+
+const geometry = new THREE.SphereGeometry(1.5);
+const material = new THREE.MeshBasicMaterial({ color: 0xcccccc });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+camera.position.z = 5;
+
+function animate() {
+  requestAnimationFrame(animate);
+
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+
+  renderer.render(scene, camera);
+}
+
+animate();
+
+/// testing
 
 /*
 
@@ -440,3 +481,5 @@ for(let test = 0 ; test < 10 ; test++){
 }
 
 */
+
+
