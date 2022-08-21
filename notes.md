@@ -74,3 +74,6 @@ Composition by volume
 0.0028%±0.001% hydrogen deuteride (HD)
 0.0006%±0.0002% ethane (C2H6)
 0.0004%±0.0004% water (H2O)
+
+
+<!-- goldilock zone -->

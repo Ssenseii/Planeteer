@@ -68,6 +68,11 @@ let chance = Math.floor(Math.random() * 100) + 1;
 let chance2 = Math.floor(Math.random() * 100) + 1;
 let diameter;
 
+/// units
+
+let GM = 1e+6; /// Gigametres
+let Au = 1.496e+8; /// Astronomical Unite
+
 /// randomizers
 let randomPlanetName;
 let randomCommonName;
@@ -81,6 +86,15 @@ let randomMoonCount;
 let randomHabitability;
 let randomNatureType;
 
+
+let randomApocenter = (Math.floor(Math.random() * 5e+9) + 4e+7);
+let randomPericenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
+for (; randomPericenter < randomApocenter;){
+  randomPericenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
+}
+
+let randomSemiMajorAxis = (randomApocenter + randomPericenter) / 2;
+let randomEccentricity = ((randomApocenter - randomPericenter) / (randomApocenter + randomPericenter))
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -109,8 +123,18 @@ var htmlMoonCount = document.getElementById("htmlMoonCount");
 var htmlHabitability = document.getElementById("htmlHabitability");
 var htmlNatureType = document.getElementById("htmlNatureType");
 
+let htmlApocenter = document.getElementById("htmlApocenter");
+let htmlPericenter= document.getElementById("htmlPericenter");
+
+let htmlSemiMajorAxis = document.getElementById("htmlSemiMajorAxis");
+let htmlEccentricity = document.getElementById("htmlEccentricity");
+
 
 let canvas = document.getElementById("canvas");
+
+
+
+
 /// planet Name: 
 
 function PlanetName() {
@@ -418,10 +442,6 @@ function PlanetNatureType() {
     randomNatureType = planetNatureType[Math.floor(Math.random() * planetNatureType.length)]
     htmlNatureType.innerHTML = randomNatureType;
   }
-
-
-
-  
   
   
   PlanetName();
@@ -435,6 +455,7 @@ function PlanetNatureType() {
   PlanetHabitability();
   PlanetNatureType();
   
+
   const Planet = {
     Id: randomPlanetId,
     Name: randomPlanetName,
@@ -479,14 +500,27 @@ function animate() {
 
 animate();
 
-/// testing
+/// end of three
 
-/*
 
-for(let test = 0 ; test < 10 ; test++){
-  console.log(moonCountChance);
+/// advanced section
+
+function PlanetApocentePericenter(){
+  htmlApocenter.innerHTML = (randomApocenter / GM).toFixed(3) + " Gm (" + (randomApocenter / Au).toFixed(3) + " Au)";
+  htmlPericenter.innerHTML = (randomPericenter / GM).toFixed(3) + " Gm (" + (randomPericenter / Au).toFixed(3) + " Au)";
 }
 
-*/
+function PlanetSemiMajorAxis(){
+  htmlSemiMajorAxis.innerHTML = (randomSemiMajorAxis / GM).toFixed(3) + " Gm (" + (randomSemiMajorAxis / Au).toFixed(3) + " Au)";
+}
+
+function PlanetEccenticity(){
+  htmlEccentricity.innerHTML = randomEccentricity
+}
+
+PlanetApocentePericenter();
+PlanetSemiMajorAxis();
+PlanetEccenticity();
+
 
 

@@ -27,5 +27,9 @@
     &-element{
       margin-bottom: 1rem;
     }
+
+    &-element > span{
+      margin-left: 1rem;
+    }
   }
 }
