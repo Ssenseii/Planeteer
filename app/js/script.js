@@ -70,7 +70,7 @@ let diameter;
 
 /// units
 
-let GM = 1e+6; /// Gigametres
+let GM = 1e+6; /// Gigametres 
 let Au = 1.496e+8; /// Astronomical Unite
 
 /// randomizers
@@ -78,7 +78,6 @@ let randomPlanetName;
 let randomCommonName;
 let randomPlanetId;
 let randomPlanetSize;
-let randomOrbitalPeriod;
 let randomSubstanceState;
 let randomLifeStatus;
 let randomMoonStatus;
@@ -87,15 +86,18 @@ let randomHabitability;
 let randomNatureType;
 
 
-let randomApocenter = (Math.floor(Math.random() * 5e+9) + 4e+7);
-let randomPericenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
-for (; randomPericenter < randomApocenter;){
-  randomPericenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
+let randomPericenter = (Math.floor(Math.random() * 5e+9) + 4e+7);
+let randomApocenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
+for (; randomApocenter < randomPericenter;){
+  randomApocenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
 }
+let GravitationalConstant = 6.6743e-11;
+let Masse = (Math.floor(Math.random() * 5.69439e+27) + 3.3010e+23)
 
 let randomSemiMajorAxis = (randomApocenter + randomPericenter) / 2;
 let randomEccentricity = ((randomApocenter - randomPericenter) / (randomApocenter + randomPericenter))
-
+let randomOrbitalPeriod = (2 * Math.PI * Math.sqrt((Math.pow((randomSemiMajorAxis), 3) / (GravitationalConstant * Masse))))
+console.log(randomOrbitalPeriod)
 /// extra vars for functions;
 let planetFirstPart;
 let planetSecondPart = [];
@@ -128,6 +130,8 @@ let htmlPericenter= document.getElementById("htmlPericenter");
 
 let htmlSemiMajorAxis = document.getElementById("htmlSemiMajorAxis");
 let htmlEccentricity = document.getElementById("htmlEccentricity");
+var htmlOrbitalPeriodAdvanced = document.getElementById("htmlOrbitalPeriodAdvanced");
+
 
 
 let canvas = document.getElementById("canvas");
@@ -308,10 +312,7 @@ function PlanetSize() {
 
 
 function PlanetOrbitalPeriod() {
-  randomOrbitalPeriod = Math.floor(Math.random() * 10000) + 1;;
-
-  if (randomOrbitalPeriod >= 300 && randomOrbitalPeriod <= 400) { htmlOrbitalPeriod.style.color = "#E6CD22" }
-  htmlOrbitalPeriod.innerHTML = randomOrbitalPeriod + " " + " ED";
+  htmlOrbitalPeriod.innerHTML = randomOrbitalPeriod;
 }
 
 function PlanetSubstanceState() {
@@ -515,12 +516,16 @@ function PlanetSemiMajorAxis(){
 }
 
 function PlanetEccenticity(){
-  htmlEccentricity.innerHTML = randomEccentricity
+  htmlEccentricity.innerHTML = randomEccentricity.toFixed(3);
+}
+
+function PlanetOrbitalPeriodAdvanced() {
+  htmlOrbitalPeriodAdvanced.innerHTML = randomOrbitalPeriod.toFixed(3) + " Earth days";
 }
 
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
-
+PlanetOrbitalPeriodAdvanced();
 
 
