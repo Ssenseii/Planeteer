@@ -376,6 +376,7 @@ function PlanetHabitability() {
 
 /// Biome Typer according to the planet type;
 /// let PlanetSS1 = ["Chthonian", "Carbon", "Desert", "Gas", "Hycean", "Ice", "Iron", "Lava", "Ocean", "Puffy", "Silicate", "Terrestrial", "Nuclear"]; /// reference
+
 function PlanetNatureType() {
   switch (true) {
     case PlanetSS1[PlanetSS1RandomValue] == "Carbon":
@@ -420,21 +421,35 @@ function PlanetNatureType() {
 
 
 
+  
+  
+  
+  PlanetName();
+  PlanetID();
+  PlanetSize();
+  PlanetOrbitalPeriod();
+  PlanetSubstanceState();
+  PlanetLifeStatus();
+  PlanetMoonStatus();
+  PlanetMoonCount();
+  PlanetHabitability();
+  PlanetNatureType();
+  
+  const Planet = {
+    Id: randomPlanetId,
+    Name: randomPlanetName,
+    Size: randomPlanetSize,
+    OrbitalPeriod: randomOrbitalPeriod,
+    SubstanceState: randomSubstanceState,
+    LifeStatus: randomLifeStatus,
+    MoonStatus: randomMoonStatus,
+    MoonCount: randomMoonCount,
+    Habitability: randomHabitability,
+    NatureType: randomNatureType,
+  } 
 
+  console.log(Planet);
 
-
-
-
-PlanetName();
-PlanetID();
-PlanetSize();
-PlanetOrbitalPeriod();
-PlanetSubstanceState();
-PlanetLifeStatus();
-PlanetMoonStatus();
-PlanetMoonCount();
-PlanetHabitability();
-PlanetNatureType();
 
 
 /// threejs

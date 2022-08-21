@@ -1,4 +1,13 @@
 .advanced{
+  padding: 1rem;
   height: 100vh;
-  border: 1px solid red;
+  display: flex;
+  flex-flow: row nowrap;
+  
+  &__left{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    border-right: 1px solid #ccc;
+  }
 }
