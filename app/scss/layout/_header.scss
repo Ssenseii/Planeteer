@@ -2,17 +2,23 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  padding-inline: 1rem;
+  
   width: 100%;
   height: $headerHeight;
+  
+  padding-inline: 1rem;
   padding-top: 8px;
   padding-bottom: 8px;
+
+  // background-color: #222;
+
 
   &__logo{
     display: flex;
     flex-flow: row;
     align-items: center;
     justify-content: center;
+
     &-title{
       font-size: 24px;
     }
@@ -35,4 +41,32 @@
         }
     }
   }
+}
+
+#generate{
+
+  border-radius: 16px;
+  padding: 1rem;
+  
+  background-color: #449c47;
+  color: #000;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.75);
+
+  border: 1px solid transparent;
+
+  &:hover{
+    text-decoration: none;
+    box-shadow: 3px 3px 2px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  &:active{
+  box-shadow: inset 4px 4px 3px 0px rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(0,0,0, 0.75);
+  }
+
 }

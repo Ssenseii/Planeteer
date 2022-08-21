@@ -1,17 +1,14 @@
 .main{
   display: flex;
   flex-flow: row nowrap;
+
   width: 100%;
-  height: $mainHeight;
-  
+  height: $sectionHeight;
+
   &__left{
     width: 60%;
     position: relative;
   }
-
-
-
-  /// Exo-Planet Info
 
   &__right{
     width: 40%;

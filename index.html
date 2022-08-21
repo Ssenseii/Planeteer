@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,27 +9,36 @@
   <link rel="stylesheet" href="dist/style.css">
   <link href="assets/fonts/RobotoSlab/stylesheet.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-  
+
   <header class="header">
-    <div class="header__logo">
-      <img class="header__logo-icon" src="assets/images/PlaneteerLogo.svg" width="100%" height="100%" alt="">
-      <h1 class="header__logo-title">Planeteer</h1>
-    </div>
-    <div class="header__nav">
-      <div class="header__nav-element">Main Screen</div>
-      <div class="header__nav-element">Advanced</div>
-      <div class="header__nav-element">Listings</div>
-      <div class="header__nav-element">Meta</div>
-    </div>
-  </header>
-  
-  
-  <main class="main">
-    
+      <div class="header__logo">
+        <img class="header__logo-icon" src="assets/images/PlaneteerLogo.svg" width="100%" height="100%" alt="">
+        <h1 class="header__logo-title">Planeteer</h1>
+      </div>
+      <div class="header__nav">
+        <a href="#advanced">
+          <div class="header__nav-element">Advanced</div>
+        </a>
+        <a href="">
+          <div class="header__nav-element">Listings</div>
+        </a>
+        <a href="">
+          <div class="header__nav-element">Meta</div>
+        </a>
+        <a href="#">
+          <button id="generate" class="header__nav-element">Generate</button>
+        </a>
+      </div>
+    </header>
+
+
+  <main id="main" class="main">
+
     <div class="main__left">
       <div class="canvas" id="canvas">
-        
+
       </div>
 
       <div class="textCard" id="textCard">
@@ -53,7 +63,7 @@
 
       <div class="main__right-info">
         <h3 class="main__right-info-title">ID: <span id="htmlId"></span></h3>
-        <h3 class="main__right-info-title">Name: <span id="htmlName" ></span></h3>
+        <h3 class="main__right-info-title">Name: <span id="htmlName"></span></h3>
         <h3 class="main__right-info-title">Size: <span id="htmlSize"></span></h3>
         <h3 class="main__right-info-title">Orbital Period: <span id="htmlOrbitalPeriod"></span></h3>
         <h3 class="main__right-info-title">Substance State: <span id="htmlSubstanceState"></span></h3>
@@ -69,7 +79,15 @@
     </div>
 
   </main>
+
+
+  <section id="advanced" class="advanced">
+      <h1>advanced</h1>
+  </section>
+
+
 </body>
 <script src="app/js/three.js"></script>
 <script src="app/js/script.js"></script>
+
 </html>

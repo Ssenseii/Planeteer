@@ -80,7 +80,7 @@ let randomMoonStatus;
 let randomMoonCount;
 let randomHabitability;
 let randomNatureType;
-let randomNatureColor;
+
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -108,7 +108,7 @@ var htmlMoonStatus = document.getElementById("htmlMoonStatus");
 var htmlMoonCount = document.getElementById("htmlMoonCount");
 var htmlHabitability = document.getElementById("htmlHabitability");
 var htmlNatureType = document.getElementById("htmlNatureType");
-var htmlNatureColor = document.getElementById("htmlNatureColor");
+
 
 let canvas = document.getElementById("canvas");
 /// planet Name: 
@@ -419,15 +419,7 @@ function PlanetNatureType() {
   }
 
 
-function PlanetNatureColor(){
-  /* the way this will work is simple,
-    each one of the stats above will have its own color value, inside a giant switch case;
 
-    It's time to introduce three js
-  */
-
-
-}
 
 
 

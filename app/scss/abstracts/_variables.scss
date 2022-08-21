@@ -1,8 +1,8 @@
 /// heights
 
 $headerHeight: calc(100vh - 90vh);
-$mainHeight: calc(100vh - $headerHeight);
-$textCardHeight: calc($mainHeight - 60vh);
+$sectionHeight: calc(100vh - $headerHeight);
+$textCardHeight: calc($sectionHeight - 60vh);
 
 
 ///colors;
@@ -17,4 +17,7 @@ $mono-green: #586E5E;
   --rare: #b14d4a;
   --unique: #E6CD22;
 }
+
+
+
 
