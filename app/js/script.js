@@ -96,7 +96,7 @@ let Masse = (Math.floor(Math.random() * 5.69439e+27) + 3.3010e+23)
 
 let randomSemiMajorAxis = (randomApocenter + randomPericenter) / 2;
 let randomEccentricity = ((randomApocenter - randomPericenter) / (randomApocenter + randomPericenter))
-let randomOrbitalPeriod = (2 * Math.PI * Math.sqrt((Math.pow((randomSemiMajorAxis), 3) / (GravitationalConstant * Masse))))
+let randomOrbitalPeriod = Math.sqrt(Math.pow((randomSemiMajorAxis / Au), 3));
 console.log(randomOrbitalPeriod)
 /// extra vars for functions;
 let planetFirstPart;
@@ -312,7 +312,7 @@ function PlanetSize() {
 
 
 function PlanetOrbitalPeriod() {
-  htmlOrbitalPeriod.innerHTML = randomOrbitalPeriod;
+  htmlOrbitalPeriod.innerHTML = randomOrbitalPeriod.toFixed(0) + " Earth Days";
 }
 
 function PlanetSubstanceState() {
