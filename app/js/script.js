@@ -96,7 +96,11 @@ let Masse = (Math.floor(Math.random() * 5.69439e+27) + 3.3010e+23)
 
 let randomSemiMajorAxis = (randomApocenter + randomPericenter) / 2;
 let randomEccentricity = ((randomApocenter - randomPericenter) / (randomApocenter + randomPericenter))
-let randomOrbitalPeriod = Math.sqrt(Math.pow((randomSemiMajorAxis / Au), 3));
+// let randomOrbitalPeriod = Math.sqrt(Math.pow((randomSemiMajorAxis / Au), 3)); /// Kepler's 3rd Special law
+let randomOrbitalPeriod = 2 * Math.PI * Math.sqrt(Math.pow((randomSemiMajorAxis * 10e+3 / Au), 3) / (GravitationalConstant * Masse)); /// Kepler's 3rd Special law
+let randomOrbitalSpeed = Math.sqrt(GravitationalConstant * Masse * ((2 / (randomPericenter * 1.496e+11 / Au)) - (1 / (randomSemiMajorAxis * 1.496e+11 / Au)))) /// vis-viva equation
+/* Apocenter and Pericenter are in Kilometers, transfered to Au, then to Metres */
+/* Distant planet -> low average speed -> long orbital period*/
 console.log(randomOrbitalPeriod)
 /// extra vars for functions;
 let planetFirstPart;
@@ -130,8 +134,8 @@ let htmlPericenter= document.getElementById("htmlPericenter");
 
 let htmlSemiMajorAxis = document.getElementById("htmlSemiMajorAxis");
 let htmlEccentricity = document.getElementById("htmlEccentricity");
-var htmlOrbitalPeriodAdvanced = document.getElementById("htmlOrbitalPeriodAdvanced");
-
+let htmlOrbitalPeriodAdvanced = document.getElementById("htmlOrbitalPeriodAdvanced");
+let htmlOrbitalSpeed = document.getElementById("htmlOrbitalSpeed");
 
 
 let canvas = document.getElementById("canvas");
@@ -520,12 +524,17 @@ function PlanetEccenticity(){
 }
 
 function PlanetOrbitalPeriodAdvanced() {
-  htmlOrbitalPeriodAdvanced.innerHTML = randomOrbitalPeriod.toFixed(3) + " Earth days";
+  htmlOrbitalPeriodAdvanced.innerHTML = randomOrbitalPeriod.toFixed(3) + " Earth Years";
+}
+
+function PlanetOrbitalSpeed(){
+  htmlOrbitalSpeed.innerHTML = randomOrbitalSpeed.toFixed(3) + " m/s"
 }
 
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
 PlanetOrbitalPeriodAdvanced();
+PlanetOrbitalSpeed();
 
 
