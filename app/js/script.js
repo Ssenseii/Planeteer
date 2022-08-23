@@ -101,7 +101,18 @@ let randomOrbitalPeriod = 2 * Math.PI * Math.sqrt(Math.pow((randomSemiMajorAxis 
 let randomOrbitalSpeed = Math.sqrt(GravitationalConstant * Masse * ((2 / (randomPericenter * 1.496e+11 / Au)) - (1 / (randomSemiMajorAxis * 1.496e+11 / Au)))) /// vis-viva equation
 /* Apocenter and Pericenter are in Kilometers, transfered to Au, then to Metres */
 /* Distant planet -> low average speed -> long orbital period*/
-console.log(randomOrbitalPeriod)
+
+/// caluclate the mean anomaly
+/// calulate the mean eccentricity
+
+  /// As the wikipedia article states, there is no closed form way to express E in terms of M.
+
+  /// so we're calculating mean angular motion instead
+
+let randomMeanAngularMotion = 360 / randomOrbitalPeriod; 
+
+
+
 /// extra vars for functions;
 let planetFirstPart;
 let planetSecondPart = [];
@@ -136,6 +147,7 @@ let htmlSemiMajorAxis = document.getElementById("htmlSemiMajorAxis");
 let htmlEccentricity = document.getElementById("htmlEccentricity");
 let htmlOrbitalPeriodAdvanced = document.getElementById("htmlOrbitalPeriodAdvanced");
 let htmlOrbitalSpeed = document.getElementById("htmlOrbitalSpeed");
+let htmlMeanAngularMotion = document.getElementById("htmlMeanAngularMotion");
 
 
 let canvas = document.getElementById("canvas");
@@ -499,10 +511,15 @@ function PlanetOrbitalSpeed(){
   htmlOrbitalSpeed.innerHTML = randomOrbitalSpeed.toFixed(3) + " m/s"
 }
 
+function PlanetMeanAngularMotion(){
+  htmlMeanAngularMotion.innerHTML = randomMeanAngularMotion.toFixed(3) + " °";
+}
+
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
 PlanetOrbitalPeriodAdvanced();
 PlanetOrbitalSpeed();
+PlanetMeanAngularMotion();
 
 
