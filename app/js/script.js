@@ -476,38 +476,6 @@ function PlanetNatureType() {
 
   console.log(Planet);
 
-
-
-/// threejs
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, canvas.offsetWidth / canvas.offsetHeight, 0.1, 1000);
-
-const renderer = new THREE.WebGLRenderer({alpha : true}); /// alpha true makes the background transparent
-renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
-canvas.appendChild(renderer.domElement);
-
-const geometry = new THREE.SphereGeometry(1.5);
-const material = new THREE.MeshBasicMaterial({ color: 0xcccccc });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
-
-camera.position.z = 5;
-
-function animate() {
-  requestAnimationFrame(animate);
-
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-
-  renderer.render(scene, camera);
-}
-
-animate();
-
-/// end of three
-
-
 /// advanced section
 
 function PlanetApocentePericenter(){
