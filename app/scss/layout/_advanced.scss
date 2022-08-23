@@ -6,8 +6,17 @@
   
   &__left{
     display: flex;
-    justify-content: center;
+    flex-flow: column nowrap;
+    align-items: center;
     width: 50%;
     border-right: 1px solid #ccc;
+  }
+
+  &__right{
+    display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      width: 50%;
+      border-right: 1px solid #ccc;
   }
 }

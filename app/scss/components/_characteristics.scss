@@ -1,0 +1,35 @@
+.oc {
+  @include characteristicsCard;
+  
+  &__title{
+    @include titleCard;
+  }
+
+  &__info{
+    @include infoCard;
+  }
+}
+
+.atmosphere{
+  @include characteristicsCard;
+  
+    &__title {
+      @include titleCard;
+    }
+  
+    &__info {
+      @include infoCard;
+    }
+}
+
+.pc{
+  @include characteristicsCard;
+  
+    &__title {
+      @include titleCard;
+    }
+  
+    &__info {
+      @include infoCard;
+    }
+}

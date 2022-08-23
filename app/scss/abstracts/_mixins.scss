@@ -1,0 +1,35 @@
+@mixin characteristicsCard{
+  display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: column nowrap;
+  
+    width: 80%;
+}
+
+@mixin titleCard{
+  border-bottom: 1px solid #ccc;
+    margin-bottom: 4rem;
+  
+    font-size: 24px;
+    padding: 1rem;
+}
+
+@mixin infoCard{
+  display: flex;
+    align-self: flex-start;
+    flex-flow: column nowrap;
+  
+    padding-left: 4rem;
+  
+    font-size: 18px;
+    font-weight: 300;
+  
+    &-element {
+      margin-bottom: 1rem;
+    }
+  
+    &-element>span {
+      margin-left: 1rem;
+    }
+}
