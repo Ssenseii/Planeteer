@@ -45,7 +45,7 @@ const Consonant = ['B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', '
 const Vowels = ['A', 'E', 'I', 'O', 'U', 'Y'];
 const Numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 const Planets = ["Spe", "Arion", "Arkas", "Orbitar", "Taphao Thong", "Taphao Kaew", "Dimidium", "Galileo", "Brahe", "Lipperhey", "Janssen", "Harriot", "Ægir", "Amateru", "Dagon", "Tadmor", "Solas", "Juno", "Orbital", "Terminus", "Apollo", "Eternis", "Lumina", "Novise", "Prism", "Shu", "Mythos", "Pheonix", "Elysium", "Lapis", "Azula"]
-
+const Months = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"];
 /// numbers
 let i = Math.floor(Math.random() * Numbers.length);
 let j = Math.floor(Math.random() * Numbers.length);
@@ -145,6 +145,11 @@ let randomInclination = Math.floor(Math.random() * 90);
 let randomLongtitudeOfAscendingNode = (Math.floor(Math.random() * 720)) - 360;
 
 
+/// time of perhilion instead of his argument
+
+let year = new Date().getFullYear() + 1;
+let randomTimePerihilion = (Math.floor(Math.random() * 29) + 1) + " " + Months[Math.floor(Math.random() * Months.length)] + " " + year;  
+
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -183,7 +188,7 @@ let htmlOrbitalSpeed = document.getElementById("htmlOrbitalSpeed");
 
 let htmlInclination = document.getElementById("htmlInclination");
 let htmlLongtitudeOfAscendingNode = document.getElementById("htmlLongtitudeOfAscendingNode");
-
+let htmlTimePerihilion = document.getElementById("htmlTimePerihilion");
 let canvas = document.getElementById("canvas");
 
 
@@ -557,6 +562,10 @@ function PlanetLongtitudeOfAscendingNode(){
   htmlLongtitudeOfAscendingNode.innerHTML = randomLongtitudeOfAscendingNode.toFixed(2) + " °";
 }
 
+function PlanetTimePerihelion(){
+  htmlTimePerihilion.innerHTML = randomTimePerihilion;
+}
+
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
@@ -565,5 +574,6 @@ PlanetOrbitalSpeed();
 PlanetMeanAngularMotion();
 PlanetInclination();
 PlanetLongtitudeOfAscendingNode(); 
+PlanetTimePerihelion();
 
 
