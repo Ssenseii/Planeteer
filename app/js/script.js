@@ -112,6 +112,39 @@ let randomOrbitalSpeed = Math.sqrt(GravitationalConstant * Masse * ((2 / (random
 let randomMeanAngularMotion = 360 / randomOrbitalPeriod; 
 
 
+/// to calculate the inclination, we need an orbital momentum vector... in the third dimension
+
+/* linear momentum is the product of mass and velocity
+      randomLinearMomentum = Masse * randomOrbitalSpeed;
+
+      The problem is that only works with 2D.
+
+      To calculate the 3D, we ned to use mr1v1 = mr2v2.
+      We don't have another body to calculate with (a sun for example)
+
+      the inclination is a random number between 0° and 90°
+
+      we'll use a randomizer for this one
+      */
+
+let randomInclination = Math.floor(Math.random() * 90);
+
+/// Calculate Longtitude of ascending node.
+
+/* n = k* h
+  k = unit vector (0, 0, 1)
+  h = specific relative angular momentum
+
+  also needs a sun.
+
+  To the randomizer...
+
+  which for the first time will go from negative numbers to positive numbers.
+  */
+
+let randomLongtitudeOfAscendingNode = (Math.floor(Math.random() * 720)) - 360;
+
+
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -147,8 +180,9 @@ let htmlSemiMajorAxis = document.getElementById("htmlSemiMajorAxis");
 let htmlEccentricity = document.getElementById("htmlEccentricity");
 let htmlOrbitalPeriodAdvanced = document.getElementById("htmlOrbitalPeriodAdvanced");
 let htmlOrbitalSpeed = document.getElementById("htmlOrbitalSpeed");
-let htmlMeanAngularMotion = document.getElementById("htmlMeanAngularMotion");
 
+let htmlInclination = document.getElementById("htmlInclination");
+let htmlLongtitudeOfAscendingNode = document.getElementById("htmlLongtitudeOfAscendingNode");
 
 let canvas = document.getElementById("canvas");
 
@@ -515,11 +549,21 @@ function PlanetMeanAngularMotion(){
   htmlMeanAngularMotion.innerHTML = randomMeanAngularMotion.toFixed(3) + " °";
 }
 
+function PlanetInclination(){
+  htmlInclination.innerHTML = randomInclination.toFixed(2) + " °";
+}
+
+function PlanetLongtitudeOfAscendingNode(){
+  htmlLongtitudeOfAscendingNode.innerHTML = randomLongtitudeOfAscendingNode.toFixed(2) + " °";
+}
+
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
 PlanetOrbitalPeriodAdvanced();
 PlanetOrbitalSpeed();
 PlanetMeanAngularMotion();
+PlanetInclination();
+PlanetLongtitudeOfAscendingNode(); 
 
 
