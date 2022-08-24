@@ -195,8 +195,9 @@ let randomScaleHeight = ((gazConstant * temperature) / (((Masse * 0.029) / 5.972
 /// physical charcateristics
 
 let randomMeanRadius = diameter / 2;
-let randomEquatorialRadius = (diameter / 2) + Math.floor(Math.random() * 300);
-let randomPolarRadius = (diameter / 2) - Math.floor(Math.random() * 300);
+let randomEquatorialRadius = (diameter / 2) - Math.floor(Math.random() * 300);
+let randomPolarRadius = (diameter / 2) + Math.floor(Math.random() * 300);
+let randomFlattening = (randomPolarRadius - randomEquatorialRadius) / randomPolarRadius;
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -239,6 +240,7 @@ let htmlSurfacePressure = document.getElementById("htmlSurfacePressure");
 let htmlMeanRadius = document.getElementById("htmlMeanRadius");
 let htmlEquatorialRadius = document.getElementById("htmlEquatorialRadius");
 let htmlPolarRadius = document.getElementById("htmlPolarRadius");
+let htmlFlattening = document.getElementById("htmlFlattening");
 
 
 let canvas = document.getElementById("canvas");
@@ -616,6 +618,10 @@ function PlanetPolarRadius(){
   htmlPolarRadius.innerHTML = randomPolarRadius + " ± " + (Math.floor(Math.random() * 20) + 10 )+ " Km";
 }
 
+function PlanetFlattening(){
+  htmlFlattening.innerHTML = randomFlattening.toFixed(3) + " ± " + (Math.random() + 0.0005).toFixed(3);
+}
+
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
@@ -630,4 +636,5 @@ PlanetScaleHeight();
 PlanetMeanRadius();
 PlanetEquatorialRadius();
 PlanetPolarRadius();
+PlanetFlattening();
 
