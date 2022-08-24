@@ -195,6 +195,8 @@ let randomScaleHeight = ((gazConstant * temperature) / (((Masse * 0.029) / 5.972
 /// physical charcateristics
 
 let randomMeanRadius = diameter / 2;
+let randomEquatorialRadius = (diameter / 2) + Math.floor(Math.random() * 300);
+let randomPolarRadius = (diameter / 2) - Math.floor(Math.random() * 300);
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -235,6 +237,8 @@ let htmlTimePerihilion = document.getElementById("htmlTimePerihilion");
 
 let htmlSurfacePressure = document.getElementById("htmlSurfacePressure");
 let htmlMeanRadius = document.getElementById("htmlMeanRadius");
+let htmlEquatorialRadius = document.getElementById("htmlEquatorialRadius");
+let htmlPolarRadius = document.getElementById("htmlPolarRadius");
 
 
 let canvas = document.getElementById("canvas");
@@ -601,7 +605,15 @@ function PlanetScaleHeight(){
 }
 
 function PlanetMeanRadius(){
-  htmlMeanRadius.innerHTML = "~ " + randomMeanRadius + " Km";
+  htmlMeanRadius.innerHTML = randomMeanRadius + " ± " + (Math.floor(Math.random() * 20) + 10) + " Km";
+}
+
+function PlanetEquatorialRadius(){
+  htmlEquatorialRadius.innerHTML = randomEquatorialRadius + " ± " + (Math.floor(Math.random() * 20) + 10) + " Km";
+}
+
+function PlanetPolarRadius(){
+  htmlPolarRadius.innerHTML = randomPolarRadius + " ± " + (Math.floor(Math.random() * 20) + 10 )+ " Km";
 }
 
 PlanetApocentePericenter();
@@ -616,4 +628,6 @@ PlanetTimePerihelion();
 PlanetSurfacePressure();
 PlanetScaleHeight();
 PlanetMeanRadius();
+PlanetEquatorialRadius();
+PlanetPolarRadius();
 
