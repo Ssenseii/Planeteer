@@ -66,12 +66,11 @@ let f = Math.floor(Math.random() * Consonant.length);
 
 let chance = Math.floor(Math.random() * 100) + 1;
 let chance2 = Math.floor(Math.random() * 100) + 1;
-let diameter;
 
 /// units
 
-let GM = 1e+6; /// Gigametres 
-let Au = 1.496e+8; /// Astronomical Unite
+let GM = 1e+6; /// km to Gigametres (devide)
+let Au = 1.496e+8; /// km to Astronomical Unit (devide)
 
 /// randomizers
 let randomPlanetName;
@@ -92,8 +91,30 @@ for (; randomApocenter < randomPericenter;){
   randomApocenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
 }
 let GravitationalConstant = 6.6743e-11;
-let Masse = (Math.floor(Math.random() * 5.69439e+27) + 3.3010e+23)
+let Masse = (Math.floor(Math.random() * 5.69439e+27) + 3.3010e+23);
+let diameter = (Math.floor(Math.random() * 1394000) + 6000);
 
+// switch(true){
+//   case chance2 <= 5 && chance2 >=1:
+//     diameter = (Math.floor(Math.random() * 1400000) + 1200000);
+//     break;
+//   case chance2 <= 15 && chance2 >= 5:
+//     diameter = (Math.floor(Math.random() * 1400000) + 1200000);
+//     break;
+//   case chance2 <= 45 && chance2 >= 15:
+//     diameter = (Math.floor(Math.random() * 1400000) + 1200000);
+//     break;
+//   case chance2 <= 75 && chance2 >= 45:
+//     diameter = (Math.floor(Math.random() * 400000) + 20000);
+//     break;
+//   case chance2 <= 100 && chance2 >= 75:
+//     diameter = (Math.floor(Math.random() * 1400000) + 6000);
+//     break;
+//   default:
+//     break;
+// }
+
+console.log("diameter = " + diameter)
 let randomSemiMajorAxis = (randomApocenter + randomPericenter) / 2;
 let randomEccentricity = ((randomApocenter - randomPericenter) / (randomApocenter + randomPericenter))
 // let randomOrbitalPeriod = Math.sqrt(Math.pow((randomSemiMajorAxis / Au), 3)); /// Kepler's 3rd Special law
@@ -151,6 +172,22 @@ let year = new Date().getFullYear() + 1;
 let randomTimePerihilion = (Math.floor(Math.random() * 29) + 1) + " " + Months[Math.floor(Math.random() * Months.length)] + " " + year;  
 
 
+/// Surface pressure
+
+/* What is probably the simplest model of an atmosphere goes like this: The density ρ, temperature T, and pressure p depend only on altitude y. The weight g of a unit mass does not depend on y (atmospheres are not thick compared to the planet radius, say). A balance of vertical forces on a horizontal slab of area A between y and y+Δy gives −p(y+Δy)A+p(y)A−ρgΔyA=0, which says that the pressure just balances the weight. Divide by Δy and take the limit as Δy tends to 0 to get the basic formula p′(y)=−ρg. Where you go from here depends on what else you assume about the atmosphere.
+
+Case 1) constant density: p(y)=p(0)−ρgy.
+
+Case 2) ideal gas with constant temperature: then Rρ′(y)T=−ρg, and you get density decreasing exponentially with altitude, and p(y)=p(0)e−gy/RT.*/
+
+let altitude = Math.floor(Math.random() * 10000) + 4000; /// in Km
+let temperature = Math.floor(Math.random() * 1000) - 500; /// Kelvin
+
+let randomSurfacePressure = (Masse * GravitationalConstant / (diameter / 2)) * Math.exp(-(GravitationalConstant * altitude) / (8.3144598 * temperature));
+console.log(randomSurfacePressure)
+
+
+
 /// extra vars for functions;
 let planetFirstPart;
 let planetSecondPart = [];
@@ -180,18 +217,18 @@ var htmlNatureType = document.getElementById("htmlNatureType");
 
 let htmlApocenter = document.getElementById("htmlApocenter");
 let htmlPericenter= document.getElementById("htmlPericenter");
-
 let htmlSemiMajorAxis = document.getElementById("htmlSemiMajorAxis");
 let htmlEccentricity = document.getElementById("htmlEccentricity");
 let htmlOrbitalPeriodAdvanced = document.getElementById("htmlOrbitalPeriodAdvanced");
 let htmlOrbitalSpeed = document.getElementById("htmlOrbitalSpeed");
-
 let htmlInclination = document.getElementById("htmlInclination");
 let htmlLongtitudeOfAscendingNode = document.getElementById("htmlLongtitudeOfAscendingNode");
 let htmlTimePerihilion = document.getElementById("htmlTimePerihilion");
+
+let htmlSurfacePressure = document.getElementById("htmlSurfacePressure");
+
+
 let canvas = document.getElementById("canvas");
-
-
 
 
 /// planet Name: 
@@ -326,33 +363,30 @@ function PlanetID() {
 function PlanetSize() {
   /// xxs, xs, s, m, l, xl, xxl, xxxl
 
+  console.log(diameter)
+
   switch (true) {
-    case 5 > chance2 && chance2 >= 1:
-      diameter = (Math.floor(Math.random() * 1400000) + 120000)
+    case diameter <= 1400000 && diameter > 1200000:
       randomPlanetSize = "Giant"
       htmlSize.style.color = "#E6CD22"
       break;
 
-    case 15 > chance2 && chance2 >= 5:
-      diameter = (Math.floor(Math.random() * 120000) + 90000)
+    case diameter <= 1200000 && diameter > 500000:
       randomPlanetSize = "Planetar"
       htmlSize.style.color = "#b14d4a"
       break;
 
-    case 30 > chance2 && chance2 >= 15:
-      diameter = (Math.floor(Math.random() * 90000) + 40000)
+    case diameter <= 500000 && diameter > 50000:
       randomPlanetSize = "Mini-Neptune"
       htmlSize.style.color = "#9582AD"
       break;
 
-    case 50 > chance2 && chance2 >= 30:
-      diameter = (Math.floor(Math.random() * 40000) + 12000)
+    case diameter <= 50000 && diameter > 10000:
       randomPlanetSize = "Super-Earth"
       htmlSize.style.color = "#5A8EC4"
       break;
 
-    case 50 <= chance2:
-      diameter = (Math.floor(Math.random() * 12000) + 6000)
+    case diameter <= 10000 && diameter >= 6000:
       randomPlanetSize = "Dwarf"
       htmlSize.style.color = "#68AD62"
       break;
@@ -367,12 +401,12 @@ function PlanetSize() {
 
 
 function PlanetOrbitalPeriod() {
-  htmlOrbitalPeriod.innerHTML = randomOrbitalPeriod.toFixed(0) + " Earth Days";
+  htmlOrbitalPeriod.innerHTML = randomOrbitalPeriod.toFixed(0) + " Earth Years";
 }
 
 function PlanetSubstanceState() {
   switch (true) {
-    case diameter >= 120000:
+    case diameter >= 120000 && diameter <= 1400000:
       PlanetSS2 = "Giant"
       htmlSubstanceState.style.color = "#E6CD22"
       break;
@@ -387,7 +421,7 @@ function PlanetSubstanceState() {
       htmlSubstanceState.style.color = "#5A8EC4"
       break;
 
-    case diameter > 6000 && diameter < 12000:
+    case diameter >= 6000 && diameter < 12000:
       PlanetSS2 = "Dwarf"
       htmlSubstanceState.style.color = "#68AD62"
       break;
@@ -566,6 +600,10 @@ function PlanetTimePerihelion(){
   htmlTimePerihilion.innerHTML = randomTimePerihilion;
 }
 
+function PlanetSurfacePressure(){
+  htmlSurfacePressure.innerHTML = randomSurfacePressure.toFixed(3) + " Pa";
+}
+
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
@@ -575,5 +613,5 @@ PlanetMeanAngularMotion();
 PlanetInclination();
 PlanetLongtitudeOfAscendingNode(); 
 PlanetTimePerihelion();
-
+PlanetSurfacePressure();
 
