@@ -92,7 +92,7 @@ for (; randomApocenter < randomPericenter;){
 }
 let GravitationalConstant = 6.6743e-11;
 let Masse = (Math.floor(Math.random() * 5.69439e+27) + 3.3010e+23);
-let diameter = (Math.floor(Math.random() * 1394000) + 6000);
+let diameter = (Math.floor(Math.random() * 139400) + 600);
 
 // switch(true){
 //   case chance2 <= 5 && chance2 >=1:
@@ -190,6 +190,11 @@ let gazConstant= 8.3145;
 /// Scale Height
 let randomScaleHeight = ((gazConstant * temperature) / (((Masse * 0.029) / 5.972e+27) * 9.8));
 
+///leaving volume composition til the end
+
+/// physical charcateristics
+
+let randomMeanRadius = diameter / 2;
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -229,6 +234,7 @@ let htmlLongtitudeOfAscendingNode = document.getElementById("htmlLongtitudeOfAsc
 let htmlTimePerihilion = document.getElementById("htmlTimePerihilion");
 
 let htmlSurfacePressure = document.getElementById("htmlSurfacePressure");
+let htmlMeanRadius = document.getElementById("htmlMeanRadius");
 
 
 let canvas = document.getElementById("canvas");
@@ -367,27 +373,27 @@ function PlanetSize() {
   /// xxs, xs, s, m, l, xl, xxl, xxxl
 
   switch (true) {
-    case diameter <= 1400000 && diameter > 1200000:
+    case diameter <= 140000 && diameter > 120000:
       randomPlanetSize = "Giant"
       htmlSize.style.color = "#E6CD22"
       break;
 
-    case diameter <= 1200000 && diameter > 500000:
+    case diameter <= 120000 && diameter > 50000:
       randomPlanetSize = "Planetar"
       htmlSize.style.color = "#b14d4a"
       break;
 
-    case diameter <= 500000 && diameter > 50000:
+    case diameter <= 50000 && diameter > 5000:
       randomPlanetSize = "Mini-Neptune"
       htmlSize.style.color = "#9582AD"
       break;
 
-    case diameter <= 50000 && diameter > 10000:
+    case diameter <= 5000 && diameter > 1000:
       randomPlanetSize = "Super-Earth"
       htmlSize.style.color = "#5A8EC4"
       break;
 
-    case diameter <= 10000 && diameter >= 6000:
+    case diameter <= 1000 && diameter >= 600:
       randomPlanetSize = "Dwarf"
       htmlSize.style.color = "#68AD62"
       break;
@@ -594,6 +600,10 @@ function PlanetScaleHeight(){
   htmlScaleHeight.innerHTML = (randomScaleHeight / 1000).toFixed(2) + " Km";
 }
 
+function PlanetMeanRadius(){
+  htmlMeanRadius.innerHTML = "~ " + randomMeanRadius + " Km";
+}
+
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
@@ -605,4 +615,5 @@ PlanetLongtitudeOfAscendingNode();
 PlanetTimePerihelion();
 PlanetSurfacePressure();
 PlanetScaleHeight();
+PlanetMeanRadius();
 
