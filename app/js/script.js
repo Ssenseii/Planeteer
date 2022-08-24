@@ -180,9 +180,15 @@ Case 1) constant density: p(y)=p(0)−ρgy.
 Case 2) ideal gas with constant temperature: then Rρ′(y)T=−ρg, and you get density decreasing exponentially with altitude, and p(y)=p(0)e−gy/RT.*/
 
 let altitude = Math.floor(Math.random() * 10000) + 4000; /// in Km
-let temperature = Math.floor(Math.random() * 1000) - 500; /// Kelvin
+let temperature = Math.floor(Math.random() * 700); /// Kelvin
 
 let randomSurfacePressure = Math.floor(Math.random() * 500) + 100;
+
+let boltzman = 1.38e-23;
+let gazConstant= 8.3145;
+
+/// Scale Height
+let randomScaleHeight = ((gazConstant * temperature) / (((Masse * 0.029) / 5.972e+27) * 9.8));
 
 
 /// extra vars for functions;
@@ -584,6 +590,10 @@ function PlanetSurfacePressure(){
   htmlSurfacePressure.innerHTML = randomSurfacePressure + " KPa";
 }
 
+function PlanetScaleHeight(){
+  htmlScaleHeight.innerHTML = (randomScaleHeight / 1000).toFixed(2) + " Km";
+}
+
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
@@ -594,4 +604,5 @@ PlanetInclination();
 PlanetLongtitudeOfAscendingNode(); 
 PlanetTimePerihelion();
 PlanetSurfacePressure();
+PlanetScaleHeight();
 
