@@ -114,7 +114,6 @@ let diameter = (Math.floor(Math.random() * 1394000) + 6000);
 //     break;
 // }
 
-console.log("diameter = " + diameter)
 let randomSemiMajorAxis = (randomApocenter + randomPericenter) / 2;
 let randomEccentricity = ((randomApocenter - randomPericenter) / (randomApocenter + randomPericenter))
 // let randomOrbitalPeriod = Math.sqrt(Math.pow((randomSemiMajorAxis / Au), 3)); /// Kepler's 3rd Special law
@@ -183,9 +182,7 @@ Case 2) ideal gas with constant temperature: then Rρ′(y)T=−ρg, and you get
 let altitude = Math.floor(Math.random() * 10000) + 4000; /// in Km
 let temperature = Math.floor(Math.random() * 1000) - 500; /// Kelvin
 
-let randomSurfacePressure = (Masse * GravitationalConstant / (diameter / 2)) * Math.exp(-(GravitationalConstant * altitude) / (8.3144598 * temperature));
-console.log(randomSurfacePressure)
-
+let randomSurfacePressure = Math.floor(Math.random() * 500) + 100;
 
 
 /// extra vars for functions;
@@ -362,8 +359,6 @@ function PlanetID() {
 
 function PlanetSize() {
   /// xxs, xs, s, m, l, xl, xxl, xxxl
-
-  console.log(diameter)
 
   switch (true) {
     case diameter <= 1400000 && diameter > 1200000:
@@ -546,21 +541,6 @@ function PlanetNatureType() {
   PlanetNatureType();
   
 
-  const Planet = {
-    Id: randomPlanetId,
-    Name: randomPlanetName,
-    Size: randomPlanetSize,
-    OrbitalPeriod: randomOrbitalPeriod,
-    SubstanceState: randomSubstanceState,
-    LifeStatus: randomLifeStatus,
-    MoonStatus: randomMoonStatus,
-    MoonCount: randomMoonCount,
-    Habitability: randomHabitability,
-    NatureType: randomNatureType,
-  } 
-
-  console.log(Planet);
-
 /// advanced section
 
 function PlanetApocentePericenter(){
@@ -601,7 +581,7 @@ function PlanetTimePerihelion(){
 }
 
 function PlanetSurfacePressure(){
-  htmlSurfacePressure.innerHTML = randomSurfacePressure.toFixed(3) + " Pa";
+  htmlSurfacePressure.innerHTML = randomSurfacePressure + " KPa";
 }
 
 PlanetApocentePericenter();
