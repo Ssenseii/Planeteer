@@ -186,6 +186,8 @@ let randomSurfacePressure = Math.floor(Math.random() * 500) + 100;
 
 let boltzman = 1.38e-23;
 let gazConstant= 8.3145;
+let geodynamicalConstant = 3.46139e-3;
+let universalGravityConstant = 6.67430e-11;
 
 /// Scale Height
 let randomScaleHeight = ((gazConstant * temperature) / (((Masse * 0.029) / 5.972e+27) * 9.8));
@@ -198,8 +200,21 @@ let randomMeanRadius = diameter / 2;
 let randomEquatorialRadius = (diameter / 2) - Math.floor(Math.random() * 300);
 let randomPolarRadius = (diameter / 2) + Math.floor(Math.random() * 300);
 let randomFlattening = (randomPolarRadius - randomEquatorialRadius) / randomPolarRadius;
+if(randomFlattening < 0){
+  randomFlattening *= -1; 
+}
 let randomSurfaceArea = Math.PI * Math.pow(diameter, 2);
 let randomVolume = (Math.PI / 6) * Math.pow(diameter, 3);
+let randomDensity = Masse / (randomVolume * 10e+3);
+/// white dwarves have a surface gravity of 9.8 * 10e5
+let randomSurfaceGravity = 9.8 + " m/s²";
+
+/// The polar moment of inertia is traditionally determined by combining measurements of spin quantities (spin precession rate and/or obliquity) with gravity quantities (coefficients of a spherical harmonic representation of the gravity field). These geodetic data usually require an orbiting spacecraft to collect.
+
+///Darwin -Radeau Equation:
+let randomMomentOfInertiaFactor = 0.66 * (1 - (0.4 * (Math.sqrt(1 - (((5 * geodynamicalConstant) / (2 * randomFlattening)) - 2)))));
+let randomEscapeVelocity = Math.sqrt((2 * universalGravityConstant * Masse) / (diameter / 2));
+let randomAxialTilt = Math.random() * 50;
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -245,6 +260,9 @@ let htmlPolarRadius = document.getElementById("htmlPolarRadius");
 let htmlFlattening = document.getElementById("htmlFlattening");
 let htmlSurfaceArea = document.getElementById("htmlSurfaceArea");
 let htmlVolume = document.getElementById("htmlVolume");
+let htmlDensity = document.getElementById("htmlDensity");
+let htmlMomentOfInertiaFactor = document.getElementById("htmlMomentOfInertiaFactor");
+let htmlEscapeVelocity = document.getElementById("htmlEscapeVelocity");
 
 
 let canvas = document.getElementById("canvas");
@@ -627,16 +645,37 @@ function PlanetFlattening(){
 }
 
 function PlanetSurfaceArea(){
-  htmlSurfaceArea.innerHTML = randomSurfaceArea.toExponential(2);
+  htmlSurfaceArea.innerHTML = randomSurfaceArea.toExponential(2) + " Km²";
 }
 
 function PlanetVolume(){
-  htmlVolume.innerHTML = randomVolume.toExponential(2);
+  htmlVolume.innerHTML = randomVolume.toExponential(2) + " Km³";
 }
 
 function PlanetMasse(){
-  htmlMasse.innerHTML = Masse.toExponential(2);
+  htmlMasse.innerHTML = Masse.toExponential(2) + " Kg";
 }
+
+function PlanetDensity(){
+  htmlDensity.innerHTML = randomDensity.toExponential(2) + " Kg/m³";
+}
+
+function PlanetSurfaceGravity(){
+  htmlSurfaceGravity.innerHTML = randomSurfaceGravity;
+}
+
+function PlanetMomentOfInertiaFactor(){
+  htmlMomentOfInertiaFactor.innerHTML = randomMomentOfInertiaFactor.toFixed(3);
+} 
+
+function PlanetEscapeVelocity(){
+  htmlEscapeVelocity.innerHTML = randomEscapeVelocity.toExponential(3) + " Km";
+} 
+
+function PlanetAxialTilt(){
+  htmlAxialTilt.innerHTML = randomAxialTilt.toFixed(2) + " °"
+}
+
 
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
@@ -656,4 +695,8 @@ PlanetFlattening();
 PlanetSurfaceArea();
 PlanetVolume();
 PlanetMasse();
-
+PlanetDensity();
+PlanetSurfaceGravity();
+PlanetMomentOfInertiaFactor();
+PlanetEscapeVelocity();
+PlanetAxialTilt();
