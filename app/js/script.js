@@ -216,6 +216,10 @@ let randomMomentOfInertiaFactor = 0.66 * (1 - (0.4 * (Math.sqrt(1 - (((5 * geody
 let randomEscapeVelocity = Math.sqrt((2 * universalGravityConstant * Masse) / (diameter / 2));
 let randomAxialTilt = Math.random() * 50;
 
+
+let randomNorthPoleRightAscension = (Math.random() * 286) + 40;
+let randomNorthPoleDeclination = (Math.random() * 90) -15;
+
 /// extra vars for functions;
 let planetFirstPart;
 let planetSecondPart = [];
@@ -263,7 +267,8 @@ let htmlVolume = document.getElementById("htmlVolume");
 let htmlDensity = document.getElementById("htmlDensity");
 let htmlMomentOfInertiaFactor = document.getElementById("htmlMomentOfInertiaFactor");
 let htmlEscapeVelocity = document.getElementById("htmlEscapeVelocity");
-
+let htmlNorthPoleRightAscension = document.getElementById("htmlNorthPoleRightAscension")
+let htmlNorthPoleDeclination = document.getElementById("htmlNorthPoleDeclination")
 
 let canvas = document.getElementById("canvas");
 
@@ -676,6 +681,11 @@ function PlanetAxialTilt(){
   htmlAxialTilt.innerHTML = randomAxialTilt.toFixed(2) + " °"
 }
 
+function PlanetNorthPole(){
+  htmlNorthPoleRightAscension.innerHTML = randomNorthPoleRightAscension.toFixed(2) + " °";
+  htmlNorthPoleDeclination.innerHTML = randomNorthPoleDeclination.toFixed(2) + " °";
+}
+
 
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
@@ -700,3 +710,4 @@ PlanetSurfaceGravity();
 PlanetMomentOfInertiaFactor();
 PlanetEscapeVelocity();
 PlanetAxialTilt();
+PlanetNorthPole();
