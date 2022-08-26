@@ -272,6 +272,7 @@ let htmlNorthPoleRightAscension = document.getElementById("htmlNorthPoleRightAsc
 let htmlNorthPoleDeclination = document.getElementById("htmlNorthPoleDeclination");
 let htmlAlbedo = document.getElementById("htmlAlbedo");
 let htmlSurfaceTemperature = document.getElementById("htmlSurfaceTemperature");
+let htmlAngularDiameter = document.getElementById("htmlAngularDiameter");
 
 let canvas = document.getElementById("canvas");
 
@@ -697,6 +698,10 @@ function PlanetSurfaceTemperature(){
   htmlSurfaceTemperature.innerHTML = temperature + " K";
 }
 
+function PlanetAngularDiameter(){
+  htmlAngularDiameter.innerHTML = "+100 °";
+}
+
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
 PlanetEccenticity();
@@ -723,3 +728,4 @@ PlanetAxialTilt();
 PlanetNorthPole();
 PlanetAlbedo();
 PlanetSurfaceTemperature();
+PlanetAngularDiameter();
