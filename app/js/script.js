@@ -218,7 +218,8 @@ let randomAxialTilt = Math.random() * 50;
 
 
 let randomNorthPoleRightAscension = (Math.random() * 286) + 40;
-let randomNorthPoleDeclination = (Math.random() * 90) -15;
+let randomNorthPoleDeclination = (Math.random() * 90) - 15;
+let randomAlbedo = (Math.random()).toFixed(3);
 
 /// extra vars for functions;
 let planetFirstPart;
@@ -267,8 +268,10 @@ let htmlVolume = document.getElementById("htmlVolume");
 let htmlDensity = document.getElementById("htmlDensity");
 let htmlMomentOfInertiaFactor = document.getElementById("htmlMomentOfInertiaFactor");
 let htmlEscapeVelocity = document.getElementById("htmlEscapeVelocity");
-let htmlNorthPoleRightAscension = document.getElementById("htmlNorthPoleRightAscension")
-let htmlNorthPoleDeclination = document.getElementById("htmlNorthPoleDeclination")
+let htmlNorthPoleRightAscension = document.getElementById("htmlNorthPoleRightAscension");
+let htmlNorthPoleDeclination = document.getElementById("htmlNorthPoleDeclination");
+let htmlAlbedo = document.getElementById("htmlAlbedo");
+let htmlSurfaceTemperature = document.getElementById("htmlSurfaceTemperature");
 
 let canvas = document.getElementById("canvas");
 
@@ -686,6 +689,13 @@ function PlanetNorthPole(){
   htmlNorthPoleDeclination.innerHTML = randomNorthPoleDeclination.toFixed(2) + " °";
 }
 
+function PlanetAlbedo(){
+  htmlAlbedo.innerHTML = randomAlbedo + " °"
+}
+
+function PlanetSurfaceTemperature(){
+  htmlSurfaceTemperature.innerHTML = temperature + " K";
+}
 
 PlanetApocentePericenter();
 PlanetSemiMajorAxis();
@@ -711,3 +721,5 @@ PlanetMomentOfInertiaFactor();
 PlanetEscapeVelocity();
 PlanetAxialTilt();
 PlanetNorthPole();
+PlanetAlbedo();
+PlanetSurfaceTemperature();
