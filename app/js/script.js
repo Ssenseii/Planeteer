@@ -1,35 +1,11 @@
+/// rarity system
 
-/*
-class Planet {
-  constructor(){
-    this.id ///planet ID
-    this.name, /// planet Name
-    this.size, /// xxs, xs, s, m, l, xl, xxl
-    this.RotationSpeed, /// speed from 1 to 100 (ended up using orbital period instead)
-    this.State, /// gaz giant, solid rock, liquid conformation
-    this.Status, /// Living / Dead T/F
-    this.moonStatus, /// does it have a moon? T/F
-    this.moonCount, /// if(moonStatus) How many moons does it have? 1-5
-    this.moonSize, ///size of its moons {to be expanded into moon subcategories}
-    this.habitable, /// can organisms live in it? T/F
-    this.natureType, /// jungle, snow, desert, volcanic...
-    this.natureColor, /// all color ranges,
-    this.liquidStatus, /// Does it contain liquids (if State = liquid, then always True)
-    this.liquidColor, /// all color ranges
-    this.Description /// description of the planet (from an AI maybe???)
-  }
-}
-
-*/
-
-/// Rarity Chances;
-/// 1-5 = unique
-/// 5-15 = rare
-/// 15 - 30 = legendary
-/// 30 - 50 = uncommon
-/// 50 - 100 = common
-
-/// rarity system 
+    /// Rarity Chances;
+    /// 1-5 = unique
+    /// 5-15 = rare
+    /// 15 - 30 = legendary
+    /// 30 - 50 = uncommon
+    /// 50 - 100 = common
 
 /*
 yellow = unique; 
@@ -45,7 +21,8 @@ const Vowels = ['A', 'E', 'I', 'O', 'U', 'Y'];
 const Numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 const Planets = ["Spe", "Arion", "Arkas", "Orbitar", "Taphao Thong", "Taphao Kaew", "Dimidium", "Galileo", "Brahe", "Lipperhey", "Janssen", "Harriot", "Ægir", "Amateru", "Dagon", "Tadmor", "Solas", "Juno", "Orbital", "Terminus", "Apollo", "Eternis", "Lumina", "Novise", "Prism", "Shu", "Mythos", "Pheonix", "Elysium", "Lapis", "Azula"]
 const Months = ["January", "February", "March", "April", "May", "June", "July","August", "September", "October", "November", "December"];
-/// numbers
+
+/// number randomizers:
 let i = Math.floor(Math.random() * Numbers.length);
 let j = Math.floor(Math.random() * Numbers.length);
 let k = Math.floor(Math.random() * Numbers.length);
@@ -53,16 +30,17 @@ let l = Math.floor(Math.random() * Numbers.length);
 let m = Math.floor(Math.random() * Numbers.length);
 let n = Math.floor(Math.random() * Numbers.length);
 
-/// vowels
+/// vowel randomizers:
 let a = Math.floor(Math.random() * Vowels.length);
 let b = Math.floor(Math.random() * Vowels.length);
 let c = Math.floor(Math.random() * Vowels.length);
 
-/// consonants
+/// consonant randomizers:
 let d = Math.floor(Math.random() * Consonant.length);
 let e = Math.floor(Math.random() * Consonant.length);
 let f = Math.floor(Math.random() * Consonant.length);
 
+/// Percentage: 
 let chance = Math.floor(Math.random() * 100) + 1;
 let chance2 = Math.floor(Math.random() * 100) + 1;
 
@@ -70,6 +48,20 @@ let chance2 = Math.floor(Math.random() * 100) + 1;
 
 let GM = 1e+6; /// km to Gigametres (devide)
 let Au = 1.496e+8; /// km to Astronomical Unit (devide)
+
+/// Globally needed Variables:
+
+
+let GravitationalConstant = 6.6743e-11;
+let Masse = (Math.floor(Math.random() * 5.69439e+27) + 3.3010e+23);
+let diameter = (Math.floor(Math.random() * 139400) + 600);
+let altitude = Math.floor(Math.random() * 10000) + 4000; /// in Km
+let temperature = Math.floor(Math.random() * 700); /// Kelvin
+let boltzman = 1.38e-23;
+let gazConstant = 8.3145;
+let geodynamicalConstant = 3.46139e-3;
+let universalGravityConstant = 6.67430e-11;
+let year = new Date().getFullYear() + 1;
 
 /// randomizers
 let randomPlanetName;
@@ -82,54 +74,26 @@ let randomMoonStatus;
 let randomMoonCount;
 let randomHabitability;
 let randomNatureType;
-
-
 let randomPericenter = (Math.floor(Math.random() * 5e+9) + 4e+7);
 let randomApocenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
+
+/// Apocenter must be larger than Pericenter, but still in the same range
 for (; randomApocenter < randomPericenter;){
   randomApocenter = (Math.floor(Math.random() * 14e+9) + 6e+7);
 }
-let GravitationalConstant = 6.6743e-11;
-let Masse = (Math.floor(Math.random() * 5.69439e+27) + 3.3010e+23);
-let diameter = (Math.floor(Math.random() * 139400) + 600);
-
-// switch(true){
-//   case chance2 <= 5 && chance2 >=1:
-//     diameter = (Math.floor(Math.random() * 1400000) + 1200000);
-//     break;
-//   case chance2 <= 15 && chance2 >= 5:
-//     diameter = (Math.floor(Math.random() * 1400000) + 1200000);
-//     break;
-//   case chance2 <= 45 && chance2 >= 15:
-//     diameter = (Math.floor(Math.random() * 1400000) + 1200000);
-//     break;
-//   case chance2 <= 75 && chance2 >= 45:
-//     diameter = (Math.floor(Math.random() * 400000) + 20000);
-//     break;
-//   case chance2 <= 100 && chance2 >= 75:
-//     diameter = (Math.floor(Math.random() * 1400000) + 6000);
-//     break;
-//   default:
-//     break;
-// }
 
 let randomSemiMajorAxis = (randomApocenter + randomPericenter) / 2;
 let randomEccentricity = ((randomApocenter - randomPericenter) / (randomApocenter + randomPericenter))
 // let randomOrbitalPeriod = Math.sqrt(Math.pow((randomSemiMajorAxis / Au), 3)); /// Kepler's 3rd Special law
 let randomOrbitalPeriod = 2 * Math.PI * Math.sqrt(Math.pow((randomSemiMajorAxis * 10e+3 / Au), 3) / (GravitationalConstant * Masse)); /// Kepler's 3rd Special law
 let randomOrbitalSpeed = Math.sqrt(GravitationalConstant * Masse * ((2 / (randomPericenter * 1.496e+11 / Au)) - (1 / (randomSemiMajorAxis * 1.496e+11 / Au)))) /// vis-viva equation
-/* Apocenter and Pericenter are in Kilometers, transfered to Au, then to Metres */
+
 /* Distant planet -> low average speed -> long orbital period*/
 
-/// caluclate the mean anomaly
-/// calulate the mean eccentricity
-
-  /// As the wikipedia article states, there is no closed form way to express E in terms of M.
-
-  /// so we're calculating mean angular motion instead
+/// As the wikipedia article states, there is no closed form way to express E in terms of M.
+/// so we're calculating mean angular motion instead
 
 let randomMeanAngularMotion = 360 / randomOrbitalPeriod; 
-
 
 /// to calculate the inclination, we need an orbital momentum vector... in the third dimension
 
@@ -143,7 +107,7 @@ let randomMeanAngularMotion = 360 / randomOrbitalPeriod;
 
       the inclination is a random number between 0° and 90°
 
-      we'll use a randomizer for this one
+      we'll use a randomizer for this one (and several other properties in the future)
       */
 
 let randomInclination = Math.floor(Math.random() * 90);
@@ -153,21 +117,19 @@ let randomInclination = Math.floor(Math.random() * 90);
 /* n = k* h
   k = unit vector (0, 0, 1)
   h = specific relative angular momentum
-
-  also needs a sun.
+    also needs a sun.
 
   To the randomizer...
-
-  which for the first time will go from negative numbers to positive numbers.
   */
-
 let randomLongtitudeOfAscendingNode = (Math.floor(Math.random() * 720)) - 360;
 
 
-/// time of perhilion instead of his argument
 
-let year = new Date().getFullYear() + 1;
+
+/// time of perhilion instead of perihilion argument
 let randomTimePerihilion = (Math.floor(Math.random() * 29) + 1) + " " + Months[Math.floor(Math.random() * Months.length)] + " " + year;  
+
+
 
 
 /// Surface pressure
@@ -177,35 +139,33 @@ let randomTimePerihilion = (Math.floor(Math.random() * 29) + 1) + " " + Months[M
 Case 1) constant density: p(y)=p(0)−ρgy.
 
 Case 2) ideal gas with constant temperature: then Rρ′(y)T=−ρg, and you get density decreasing exponentially with altitude, and p(y)=p(0)e−gy/RT.*/
-
-let altitude = Math.floor(Math.random() * 10000) + 4000; /// in Km
-let temperature = Math.floor(Math.random() * 700); /// Kelvin
-
 let randomSurfacePressure = Math.floor(Math.random() * 500) + 100;
 
-let boltzman = 1.38e-23;
-let gazConstant= 8.3145;
-let geodynamicalConstant = 3.46139e-3;
-let universalGravityConstant = 6.67430e-11;
+
 
 /// Scale Height
 let randomScaleHeight = ((gazConstant * temperature) / (((Masse * 0.029) / 5.972e+27) * 9.8));
 
 ///leaving volume composition til the end
 
-/// physical charcateristics
 
+
+
+/// physical charcateristics
 let randomMeanRadius = diameter / 2;
 let randomEquatorialRadius = (diameter / 2) - Math.floor(Math.random() * 300);
 let randomPolarRadius = (diameter / 2) + Math.floor(Math.random() * 300);
 let randomFlattening = (randomPolarRadius - randomEquatorialRadius) / randomPolarRadius;
+
 if(randomFlattening < 0){
   randomFlattening *= -1; 
-}
+} /// since we have random polar and equatorial values
+
 let randomSurfaceArea = Math.PI * Math.pow(diameter, 2);
 let randomVolume = (Math.PI / 6) * Math.pow(diameter, 3);
 let randomDensity = Masse / (randomVolume * 10e+3);
-/// white dwarves have a surface gravity of 9.8 * 10e5
+
+/// fun-fact: white dwarves have a surface gravity of 9.8 * 10e5
 let randomSurfaceGravity = 9.8 + " m/s²";
 
 /// The polar moment of inertia is traditionally determined by combining measurements of spin quantities (spin precession rate and/or obliquity) with gravity quantities (coefficients of a spherical harmonic representation of the gravity field). These geodetic data usually require an orbiting spacecraft to collect.
@@ -230,7 +190,6 @@ let PlanetSS1RandomValue = Math.floor(Math.random() * PlanetSS1.length);
 /*["Hydrogen","Helium","Lithium","Beryllium","Boron","Carbon","Nitrogen","Oxygen","Fluorine","Neon","Sodium","Magnesium","Aluminum","Silicon","Phosphorus","Sulfur","Chlorine","Argon","Potassium","Calcium","Scandium","Titanium","Vanadium","Chromium","Manganese","Iron","Cobalt","Nickel","Copper","Zinc","Gallium","Germanium","Arsenic","Selenium","Bromine","Krypton","Rubidium","Strontium","Yttrium","Zirconium","Niobium","Molybdenum","Technetium","Ruthenium","Rhodium","Palladium","Silver","Cadmium","Indium","Tin","Antimony","Tellurium","Iodine","Xenon","Cesium","Barium","Lanthanum","Cerium","Praseodymium","Neodymium","Promethium","Samarium","Europium","Gadolinium","Terbium","Dysprosium","Holmium","Erbium","Thulium","Ytterbium","Lutetium","Hafnium","Tantalum","Tungsten","Rhenium","Osmium","Iridium","Platinum","Gold","Mercury","Thallium","Lead","Bismuth","Polonium","Astatine","Radon","Francium","Radium","Actinium","Thorium","Protactinium","Uranium","Neptunium","Plutonium","Americium","Curium","Berkelium","Californium","Einsteinium","Fermium","Mendelevium","Nobelium","Lawrencium","Rutherfordium","Dubnium","Seaborgium","Bohrium","Hassium","Meitnerium"]; */
 let moonCountChance = (Math.round(Math.random() * 2)) + 1;
 
-let planetNatureType = [];
 
 /// html vars
 
@@ -280,11 +239,7 @@ let canvas = document.getElementById("canvas");
 
 function PlanetName() {
 
-  /// how a planet name works is: 
   /*  
-    first we need the name of the solar system
-    (the name should be locally generated per browser, saved, and re-used for other planets)
-    
     names must be phonetically pleasing*
     (consonant + vowel + consonent) ///done
     (voxel + vowel + consonet + vowel) /// Done
@@ -591,140 +546,37 @@ function PlanetNatureType() {
 
 /// advanced section
 
-function PlanetApocentePericenter(){
+function PlanetAdvanced(){
   htmlApocenter.innerHTML = (randomApocenter / GM).toFixed(3) + " Gm (" + (randomApocenter / Au).toFixed(3) + " Au)";
   htmlPericenter.innerHTML = (randomPericenter / GM).toFixed(3) + " Gm (" + (randomPericenter / Au).toFixed(3) + " Au)";
-}
-
-function PlanetSemiMajorAxis(){
   htmlSemiMajorAxis.innerHTML = (randomSemiMajorAxis / GM).toFixed(3) + " Gm (" + (randomSemiMajorAxis / Au).toFixed(3) + " Au)";
-}
-
-function PlanetEccenticity(){
   htmlEccentricity.innerHTML = randomEccentricity.toFixed(3);
-}
-
-function PlanetOrbitalPeriodAdvanced() {
   htmlOrbitalPeriodAdvanced.innerHTML = randomOrbitalPeriod.toFixed(3) + " Earth Years";
-}
-
-function PlanetOrbitalSpeed(){
   htmlOrbitalSpeed.innerHTML = randomOrbitalSpeed.toFixed(3) + " m/s"
-}
-
-function PlanetMeanAngularMotion(){
   htmlMeanAngularMotion.innerHTML = randomMeanAngularMotion.toFixed(3) + " °";
-}
-
-function PlanetInclination(){
   htmlInclination.innerHTML = randomInclination.toFixed(2) + " °";
-}
-
-function PlanetLongtitudeOfAscendingNode(){
   htmlLongtitudeOfAscendingNode.innerHTML = randomLongtitudeOfAscendingNode.toFixed(2) + " °";
-}
-
-function PlanetTimePerihelion(){
   htmlTimePerihilion.innerHTML = randomTimePerihilion;
-}
-
-function PlanetSurfacePressure(){
   htmlSurfacePressure.innerHTML = randomSurfacePressure + " KPa";
-}
-
-function PlanetScaleHeight(){
   htmlScaleHeight.innerHTML = (randomScaleHeight / 1000).toFixed(2) + " Km";
-}
-
-function PlanetMeanRadius(){
   htmlMeanRadius.innerHTML = randomMeanRadius + " ± " + (Math.floor(Math.random() * 20) + 10) + " Km";
-}
-
-function PlanetEquatorialRadius(){
   htmlEquatorialRadius.innerHTML = randomEquatorialRadius + " ± " + (Math.floor(Math.random() * 20) + 10) + " Km";
-}
-
-function PlanetPolarRadius(){
   htmlPolarRadius.innerHTML = randomPolarRadius + " ± " + (Math.floor(Math.random() * 20) + 10 )+ " Km";
-}
-
-function PlanetFlattening(){
   htmlFlattening.innerHTML = randomFlattening.toFixed(3) + " ± " + (Math.random() + 0.0005).toFixed(3);
-}
-
-function PlanetSurfaceArea(){
   htmlSurfaceArea.innerHTML = randomSurfaceArea.toExponential(2) + " Km²";
-}
-
-function PlanetVolume(){
   htmlVolume.innerHTML = randomVolume.toExponential(2) + " Km³";
-}
-
-function PlanetMasse(){
   htmlMasse.innerHTML = Masse.toExponential(2) + " Kg";
-}
-
-function PlanetDensity(){
   htmlDensity.innerHTML = randomDensity.toExponential(2) + " Kg/m³";
-}
-
-function PlanetSurfaceGravity(){
   htmlSurfaceGravity.innerHTML = randomSurfaceGravity;
-}
-
-function PlanetMomentOfInertiaFactor(){
   htmlMomentOfInertiaFactor.innerHTML = randomMomentOfInertiaFactor.toFixed(3);
-} 
-
-function PlanetEscapeVelocity(){
   htmlEscapeVelocity.innerHTML = randomEscapeVelocity.toExponential(3) + " Km";
-} 
-
-function PlanetAxialTilt(){
   htmlAxialTilt.innerHTML = randomAxialTilt.toFixed(2) + " °"
-}
-
-function PlanetNorthPole(){
   htmlNorthPoleRightAscension.innerHTML = randomNorthPoleRightAscension.toFixed(2) + " °";
   htmlNorthPoleDeclination.innerHTML = randomNorthPoleDeclination.toFixed(2) + " °";
-}
-
-function PlanetAlbedo(){
   htmlAlbedo.innerHTML = randomAlbedo + " °"
-}
-
-function PlanetSurfaceTemperature(){
   htmlSurfaceTemperature.innerHTML = temperature + " K";
-}
-
-function PlanetAngularDiameter(){
   htmlAngularDiameter.innerHTML = "+100 °";
 }
 
-PlanetApocentePericenter();
-PlanetSemiMajorAxis();
-PlanetEccenticity();
-PlanetOrbitalPeriodAdvanced();
-PlanetOrbitalSpeed();
-PlanetMeanAngularMotion();
-PlanetInclination();
-PlanetLongtitudeOfAscendingNode(); 
-PlanetTimePerihelion();
-PlanetSurfacePressure();
-PlanetScaleHeight();
-PlanetMeanRadius();
-PlanetEquatorialRadius();
-PlanetPolarRadius();
-PlanetFlattening();
-PlanetSurfaceArea();
-PlanetVolume();
-PlanetMasse();
-PlanetDensity();
-PlanetSurfaceGravity();
-PlanetMomentOfInertiaFactor();
-PlanetEscapeVelocity();
-PlanetAxialTilt();
-PlanetNorthPole();
-PlanetAlbedo();
-PlanetSurfaceTemperature();
-PlanetAngularDiameter();
+
+PlanetAdvanced();

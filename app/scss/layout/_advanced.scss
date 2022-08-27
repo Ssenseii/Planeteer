@@ -3,6 +3,7 @@
   height: 100vh;
   display: flex;
   flex-flow: row nowrap;
+  border-bottom: 1px solid #ccc;
   
   &__left{
     display: flex;

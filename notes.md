@@ -1,5 +1,5 @@
 # Planet Properties
-  ## We need to start thinking about adding real life properties into the 
+  ## We need to start thinking about adding real life properties into Planeteer
 
 EX: Jupiter:
 
@@ -77,3 +77,12 @@ Composition by volume
 
 
 <!-- goldilock zone -->
+
+
+## we do we add in the third tab?
+Something with graphics?
+Explanation of Cosmological phenomena? (I am so done with math)
+Create your own Planet?
+Market?
+
+
