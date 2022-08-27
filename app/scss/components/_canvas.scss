@@ -2,4 +2,7 @@
   width: 100%;
   height: $sectionHeight;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

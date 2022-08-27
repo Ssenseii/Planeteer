@@ -32,4 +32,8 @@
     &__info {
       @include infoCard;
     }
+
+    &__info > span{
+      color: #fff;
+    }
 }
