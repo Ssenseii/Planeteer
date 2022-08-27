@@ -366,27 +366,22 @@ function PlanetSize() {
   switch (true) {
     case diameter <= 140000 && diameter > 120000:
       randomPlanetSize = "Giant"
-      htmlSize.style.color = "#E6CD22"
       break;
 
     case diameter <= 120000 && diameter > 50000:
       randomPlanetSize = "Planetar"
-      htmlSize.style.color = "#b14d4a"
       break;
 
     case diameter <= 50000 && diameter > 5000:
       randomPlanetSize = "Mini-Neptune"
-      htmlSize.style.color = "#9582AD"
       break;
 
     case diameter <= 5000 && diameter > 1000:
       randomPlanetSize = "Super-Earth"
-      htmlSize.style.color = "#5A8EC4"
       break;
 
     case diameter <= 1000 && diameter >= 600:
       randomPlanetSize = "Dwarf"
-      htmlSize.style.color = "#68AD62"
       break;
 
     default:
@@ -406,22 +401,18 @@ function PlanetSubstanceState() {
   switch (true) {
     case diameter >= 120000 && diameter <= 1400000:
       PlanetSS2 = "Giant"
-      htmlSubstanceState.style.color = "#E6CD22"
       break;
 
     case diameter >= 90000 && diameter < 120000:
       PlanetSS2 = "ProtoGiant"
-      htmlSubstanceState.style.color = "#b14d4a"
       break;
 
     case diameter >= 12000 && diameter < 90000:
       PlanetSS2 = "Planet"
-      htmlSubstanceState.style.color = "#5A8EC4"
       break;
 
     case diameter >= 6000 && diameter < 12000:
       PlanetSS2 = "Dwarf"
-      htmlSubstanceState.style.color = "#68AD62"
       break;
 
     default:
@@ -443,7 +434,6 @@ function PlanetLifeStatus() {
 
   } else {
     randomLifeStatus = true;
-    htmlLifeStatus.style.color = "#E6CD22"
   }
   htmlLifeStatus.innerHTML = randomLifeStatus;
 }
@@ -474,7 +464,7 @@ function PlanetMoonCount() {
 
 function PlanetHabitability() {
   if (randomLifeStatus) {
-    if (PlanetSS1[PlanetSS1RandomValue] == "Terrestrial" || PlanetSS1[PlanetSS1RandomValue] == "Silicate" || PlanetSS1[PlanetSS1RandomValue] == "Ocean") {
+    if (PlanetSS1[PlanetSS1RandomValue] == "Terrestrial" || PlanetSS1[PlanetSS1RandomValue] == "Silicate") {
       randomHabitability = "Suited for Human Life";
     } else {
       randomHabitability = "Not Suited for Human Life";
